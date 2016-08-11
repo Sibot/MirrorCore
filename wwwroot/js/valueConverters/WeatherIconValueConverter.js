@@ -25,15 +25,15 @@ export class WeatherIconValueConverter {
             case 4: return `${returnString}${isNight ? 'night' : 'day'}-${isNight ? 'alt-cloudy': 'cloudy'}`;
             case 5: return `${returnString}cloud`;
             case 6: return `${returnString}cloudy`;
-            case 7: return `${returnString}-${isNight ? 'night' : 'day'}-fog`;
-            case 8: return `${returnString}-${isNight ? 'night' : 'day'}-rain`;
-            case 9: return `${returnString}-${isNight ? 'night' : 'day'}-${isNight ? 'alt-thunderstorm': 'storm-showers'}`;
-            case 10: return `${returnString}-${isNight ? 'night' : 'day'}-${isNight ? 'alt-sleet': 'sleet'}`;
-            case 11: return `${returnString}-${isNight ? 'night' : 'day'}-${isNight ? 'alt-snow': 'snow'}`;
-            case 12: return `${returnString}-${isNight ? 'night' : 'day'}-${isNight ? 'alt-rain': 'rain'}`;
-            case 13: return `${returnString}-thunderstorm`;
-            case 14: return `${returnString}-sleet`;
-            case 15: return `${returnString}-snow`;
+            case 7: return `${returnString}${isNight ? 'night' : 'day'}-fog`;
+            case 8: return `${returnString}${isNight ? 'night' : 'day'}-rain`;
+            case 9: return `${returnString}${isNight ? 'night' : 'day'}-${isNight ? 'alt-thunderstorm': 'storm-showers'}`;
+            case 10: return `${returnString}${isNight ? 'night' : 'day'}-${isNight ? 'alt-sleet': 'sleet'}`;
+            case 11: return `${returnString}${isNight ? 'night' : 'day'}-${isNight ? 'alt-snow': 'snow'}`;
+            case 12: return `${returnString}${isNight ? 'night' : 'day'}-${isNight ? 'alt-rain': 'rain'}`;
+            case 13: return `${returnString}thunderstorm`;
+            case 14: return `${returnString}sleet`;
+            case 15: return `${returnString}snow`;
         }
     }
 }

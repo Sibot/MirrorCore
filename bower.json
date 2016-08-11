@@ -8,6 +8,7 @@
     "jquery-validation-unobtrusive": "3.2.6",
     "moment": "^2.14.1",
     "fetch": "^1.0.0",
-    "normalize-css": "normalize.css#^4.2.0"
+    "normalize-css": "normalize.css#^4.2.0",
+    "weather-icons": "erikflowers/weather-icons#^2.0.10"
   }
 }

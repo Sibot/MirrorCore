@@ -1,15 +1,18 @@
 ﻿import {TimeService} from 'js/services/timeService';
+import {inject} from 'aurelia-framework';
+
+@inject(TimeService)
 
 export class TimePane {
-    constructor() {
-
+    constructor(timeService) {
+        this.timeService = timeService;
         this.second = 0;
         this.minute = 0;
         this.hour = 0;
         this.week = 0;
         this.date = '';
 
-        new TimeService().time.then(moment => {
+        this.timeService.time.then(moment => {
             this.moment = moment;
             this.weekString = this.moment.localeData()._week.asString;
             setInterval(() => this.incrementSecond(), 1000);

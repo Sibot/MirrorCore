@@ -1,13 +1,15 @@
-﻿import {HttpClient} from 'aurelia-fetch-client';
+﻿import {inject} from 'aurelia-framework';
+import {HttpClient} from 'aurelia-fetch-client';
+import 'fetch';
 
+@inject(HttpClient)
 export class RequestService {
-    constructor() {
-        this.http = new HttpClient();
+    constructor(http) {
+        this.http = http;
     }
-    
+
     getJson(url) {
         return this.http.fetch(url)
-                   .then(response => response.json());
-
+                        .then(response => response.json());
     }
 }

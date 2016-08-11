@@ -1,9 +1,12 @@
 ﻿import {DeparturesService} from 'js/services/departuresService';
 import moment from '../../lib/moment/moment';
+import {inject} from 'aurelia-framework';
 
+@inject(DeparturesService)
 export class DeparturesPane {
-    constructor() {
-        new DeparturesService().data.then(data => {
+    constructor(departuresService) {
+        this.departuresService = departuresService;
+        this.departuresService.data.then(data => {
             this.data = data;
             this.departures = data.ResponseData;
             this.moment = moment;
