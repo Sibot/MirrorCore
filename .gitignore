@@ -1,6 +1,14 @@
 node_modules/
+
+bin/
+obj/
+
 bower_components/
+
 *.log
+
+wwwroot/jspm_packages/
+wwwroot/lib/
 
 build/
 dist/

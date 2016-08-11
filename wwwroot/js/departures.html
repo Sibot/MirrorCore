@@ -1,0 +1,25 @@
+﻿<template bindable="transitDepartures, transitMode">
+    <div class="transportationContainer">
+        <p class="transitModeTitle">${transitMode}</p>
+        <div class="departuresLegend row">
+            <span class="lineNumber col-md-3">Line</span>
+            <span class="destination col-md-5">Destination</span>
+            <span class="displayTime col-md-4">Departure</span>
+        </div>
+        <ul>
+            <li class="departure" repeat.for="departure of transitDepartures">
+                <div class="departureContainer row">
+                    <div class="lineNumber col-md-3">${departure.LineNumber}</div>
+                    <div class="destination col-md-5">${departure.Destination}</div>
+                    <div class="displayTime col-md-4">${departure.DisplayTime}</div>
+                    <div class="actualTime col-md-12">${relativeNow.to(moment(departure.TimeTabledDateTime), true)}</div>
+                </div>
+                <div class="stopDeviations">
+                    <ul bind-if="departure.Deviations.length">
+                        <li repeat.for="deviation of bus.Deviations">${deviation.Text}</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</template>

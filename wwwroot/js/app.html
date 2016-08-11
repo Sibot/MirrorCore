@@ -1,0 +1,29 @@
+﻿<template>
+    <require from="./weatherPane"></require>
+    <require from="./timePane"></require>
+    <require from="./departuresPane"></require>
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-3" id="leftPane">
+                <weather-pane></weather-pane>
+            </div>
+            <div class="col-md-6" id="centerPane">
+                <time-pane></time-pane>
+                <div class="row">
+                    <div class="col-md-6" id="todoPane">
+                        <h2>Todo</h2>
+                    </div>
+                    <div class="col-md-6" id="listPane">
+                        <h2>List</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" id="rightPane">
+                <departures-pane></departures-pane>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2016 - MirrorCore</p>
+    </footer>
+</template>

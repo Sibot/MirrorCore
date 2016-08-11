@@ -1,0 +1,8 @@
+﻿<template bindable="forecast">
+    <require from='./valueConverters/WeatherIconValueConverter'></require>
+    <div class="forecastItem">
+        <span class="forecastTime glyphicon glyphicon-time">${forecastTime}</span>
+        <span class="forecastTemp wi wi-thermometer"> ${temperature}</span>
+        <span class="forecastIcon wi ${icon | weatherIcon:isNight}"> ${icon | weatherIcon:isNight}</span>
+    </div>
+</template>

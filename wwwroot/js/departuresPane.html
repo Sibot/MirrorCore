@@ -1,0 +1,39 @@
+﻿<template>
+    <div class="departuresPane">
+        <h2>Departures</h2>
+        <div class="departuresContainer">
+            <div class="stopDeviationsContainer" if.bind="departures.StopPointDeviations.length">
+                <ul class="stopDeviations">
+                    <li class="stopDeviation" repeat.for="deviation of departures.StopPointDeviations">${deviation.StopInfo.StopAreaName} - ${deviation.StopInfo.TransportMode} - ${deviation.Deviation.Text}</li>
+                </ul>
+            </div>
+            <ul class="transportations">
+                <li class="transportation" bind-if="departures.Buses">
+                    <div class="transportationContainer">
+                        <p>Bus</p>
+                        <div class="departuresTitle row">
+                            <div class="lineNumber col-md-2">Line</div>
+                            <div class="destination col-md-5">Destination</div>
+                            <div class="displayTime col-md-5">Departure</div>
+                        </div>
+                        <ul>
+                            <li class="departure" repeat.for="bus of departures.Buses">
+                                <div class="departureContainer row">
+                                    <div class="lineNumber col-md-2">${bus.LineNumber}</div>
+                                    <div class="destination col-md-5">${bus.Destination}</div>
+                                    <!--<div class="displayTime col-md-4">${bus.DisplayTime}</div>-->
+                                    <div class="actualTime col-md-5">${relativeNow.to(moment(bus.TimeTabledDateTime), true)}</div>
+                                </div>
+                                <div class="stopDeviations">
+                                    <ul bind-if="bus.Deviations.length">
+                                        <li repeat.for="deviation of bus.Deviations">${deviation.Text}</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>

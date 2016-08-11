@@ -1,0 +1,10 @@
+﻿<template>
+    <div class="timePane" id="timePane" if-bind="moment">
+        <h2>Time</h2>
+        <div class="digitalClock">
+            <div class="date">${date}</div>
+            <div class="week">${weekString} ${week}</div>
+            <div class="time">${hour}<b class="blink">:</b>${minute}<b class="blink">:</b>${second}</div>
+        </div>
+    </div>
+</template>
