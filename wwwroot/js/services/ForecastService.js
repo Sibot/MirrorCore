@@ -14,6 +14,9 @@ export class ForecastService {
         return this.requestService
             .getJson(forecastUrl)
             .then(data => {
+                data.timeSeries = data.timeSeries.filter(function(v, i, a){
+                    return i % 2 === 0;
+                })
                 this.forecastData = data;
                 return this.forecastData;
             });

@@ -1,4 +1,4 @@
-﻿import {RequestService} from 'js/services/RequestService';
+﻿import {RequestService} from './RequestService';
 import moment from '../../lib/moment/moment';
 import sv from '../../lib/moment/locale/sv';
 import {inject} from 'aurelia-framework';

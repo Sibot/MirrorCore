@@ -1,4 +1,4 @@
-﻿import {RequestService} from './requestService';
+﻿import {RequestService} from './RequestService';
 import {inject} from 'aurelia-framework';
 
 @inject(RequestService)

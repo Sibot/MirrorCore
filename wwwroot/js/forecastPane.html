@@ -1,7 +1,9 @@
 ﻿<template>
     <require from="./forecastItem"></require>
-    <div class="forecastPane" id="forecastPane">
-        <h2>Weather</h2>
-        <forecast-item repeat.for="forecast of data.timeSeries"></forecast-item>
+    <require from="./forecastSettings"></require>
+    <div class="pane forecast-pane" id="forecastPane">
+        <h2>${header}<div class="btn btn-small forecast-settings pull-right glyphicon glyphicon-cog" click.delegate="showSettings = !showSettings"></div></h2>
+        <forecast-settings header.bind="header" settings.two-way="settings" show.bind="showSettings"></forecast-settings>
+        <forecast-item repeat.for="forecast of forecastData.timeSeries"></forecast-item>
     </div>
 </template>

@@ -1,16 +1,16 @@
 ﻿<template>
     <require from='./valueConverters/CapitalizeValueConverter'></require>
-    <div class="timePane" id="timePane" if-bind="moment">
+    <div class="pane time-pane" id="timePane" if-bind="moment">
         <h2>Time</h2>
-        <div class="digitalClock">
-            <div class="date">
-                <span class="day">${day | capitalize}</span>
-                <span class="date">${date}</span>
-                <span class="month">${month | capitalize}</span>
-                <span class="year">${year}</span>
+        <div class="digital-clock">
+            <div class="clock-date">
+                <span class="clock-day">${day | capitalize}</span>
+                <span class="clock-date">${date}</span>
+                <span class="clock-month">${month | capitalize}</span>
+                <span class="clock-year">${year}</span>
             </div>
-            <div class="week">${week}</div>
-            <div class="time">${hour}<b class="blink">:</b>${minute}<b class="blink">:</b>${second}</div>
+            <div class="clock-week">${week}</div>
+            <div class="clock-time">${hour}<b class="clock-separator-blink">:</b>${minute}<b class="clock-separator-blink">:</b>${second}</div>
         </div>
     </div>
 </template>

@@ -9,7 +9,6 @@ export class DeparturesPane {
         this.timeService = timeService;
         this.departuresService.getDepartures()
                               .then(data => {
-                                  console.log(data);
                                   this.data = data;
                                   this.departures = data.ResponseData;
                                   this.moment = this.timeService.moment;
