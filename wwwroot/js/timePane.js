@@ -2,7 +2,6 @@
 import {inject} from 'aurelia-framework';
 
 @inject(TimeService)
-
 export class TimePane {
     constructor(timeService) {
         this.timeService = timeService;
@@ -11,12 +10,16 @@ export class TimePane {
         this.hour = 0;
         this.week = 0;
         this.date = '';
+        this.day = '';
+        this.month = '';
+        this.year = 0;
 
-        this.timeService.time.then(moment => {
-            this.moment = moment;
-            this.weekString = this.moment.localeData()._week.asString;
-            setInterval(() => this.incrementSecond(), 1000);
-        });
+        this.timeService.getTime()
+                        .then(moment => {
+                            this.moment = moment;
+                            this.recomputeData();
+                            setInterval(() => this.incrementSecond(), 1000);
+                        });
     }
     
     incrementSecond() {
@@ -25,10 +28,14 @@ export class TimePane {
     }
 
     recomputeData() {
-        this.second = this.moment.format('ss');
-        this.minute = this.moment.format('mm');
+        this.date = this.moment.format('Do');
+        this.day = this.moment.format('dddd');
         this.hour = this.moment.format('HH');
-        this.week = this.moment.week();
-        this.date = this.moment.format('dddd Do MMMM YYYY');
+        this.minute = this.moment.format('mm');
+        this.month = this.moment.format('MMMM');
+        this.second = this.moment.format('ss');
+        this.week = this.moment.format('[Vecka] w');
+        this.year = this.moment.format('YYYY');
+
     }
 }

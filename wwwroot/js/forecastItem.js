@@ -14,9 +14,9 @@ export class ForecastItem {
         let forecastTime = localMoment.format('dddd HH:mm');
         let hour = localMoment.hour();
         let isNight = hour < 6 || hour > 22;
-        //todo: use moments calendar for "today", "tomorrow" calcs
+
+        this.forecastTime = localMoment.calendar(this.timeService.time);
         this.temperature = bindingContext.forecast.parameters[1].values[0];
-        this.forecastTime = forecastTime;
         this.icon = bindingContext.forecast.parameters[18].values[0];
         this.isNight = isNight;
     }

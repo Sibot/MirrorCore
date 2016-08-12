@@ -4,12 +4,16 @@ import {inject} from 'aurelia-framework';
 @inject(RequestService)
 export class DeparturesService {
     constructor(requestService) {
-        let departureUrl = 'departures/getFutureDepartures';
         this.requestService = requestService;
-        this.data = this.requestService
+    }
+
+    getDepartures(){
+        let departureUrl = 'departures/getFutureDepartures';
+        return this.requestService
             .getJson(departureUrl)
             .then(departures => {
+                this.departuresData = departures;
                 return departures;
-            });
+            }); 
     }
 }

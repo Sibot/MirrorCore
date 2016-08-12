@@ -1,4 +1,4 @@
-﻿import {RequestService} from 'js/services/requestService';
+﻿import {RequestService} from 'js/services/RequestService';
 import moment from '../../lib/moment/moment';
 import sv from '../../lib/moment/locale/sv';
 import {inject} from 'aurelia-framework';
@@ -6,12 +6,18 @@ import {inject} from 'aurelia-framework';
 @inject(RequestService)
 export class TimeService {
     constructor(requestService) {
-        let timeUrl = "/time/getCurrentTime";
         moment.locale('sv');
         this.moment = moment;
         this.requestService = requestService;
-        this.time = this.requestService
+    }
+
+    getTime(){
+        let timeUrl = "/time/getCurrentTime";
+        return this.requestService
             .getJson(timeUrl)
-            .then(time => moment(time.dateString));
+            .then(time => {
+                this.time = moment(time.dateString);
+                return this.time; 
+            });
     }
 }
