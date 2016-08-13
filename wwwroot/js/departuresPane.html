@@ -1,38 +1,37 @@
 ﻿<template>
+    <require from="./departureItem"></require>
     <div class="pane departures-pane">
-        <h2>Departures</h2>
+        <header class="row">
+            <h2 class="heading col-md-10">${heading}</h2>
+            <span class="btn btn-small forecast-settings pull-right glyphicon glyphicon-cog col-md-2" click.delegate="showSettings = !showSettings"></span>
+        </header>
         <div class="departures-container">
             <div class="stop-deviations-container" if.bind="departures.StopPointDeviations.length">
                 <ul class="stop-deviations">
                     <li class="stop-deviation" repeat.for="deviation of departures.StopPointDeviations">${deviation.StopInfo.StopAreaName} - ${deviation.StopInfo.TransportMode} - ${deviation.Deviation.Text}</li>
                 </ul>
             </div>
-            <ul class="transportations">
-                <li class="transportation" bind-if="departures.Buses">
+            <div class="transportations">
+                <div class="transportation" if.bind="departures.Buses">
                     <div class="transportation-container">
-                        <p>Bus</p>
+                        <h3>Bus</h3>
                         <div class="departures-title row">
-                            <div class="line-number-legend col-md-2">Line</div>
-                            <div class="destination-legend col-md-5">Destination</div>
-                            <div class="actual-time-legend col-md-5">Departure</div>
+                            <span class="line-number-legend col-md-2">Line</span>
+                            <span class="destination-legend col-md-4">Destination</span>
+                            <span class="actual-time-legend col-md-6">Departure</span>
                         </div>
-                        <ul>
-                            <li class="departure" repeat.for="bus of departures.Buses">
-                                <div class="departure-container row">
-                                    <div class="line-number col-md-2">${bus.LineNumber}</div>
-                                    <div class="destination col-md-5">${bus.Destination}</div>
-                                    <div class="actual-time col-md-5">${relativeNow.to(moment(bus.TimeTabledDateTime), true)}</div>
-                                </div>
-                                <div class="stop-deviations">
-                                    <ul bind-if="bus.Deviations.length">
-                                        <li repeat.for="deviation of bus.Deviations">${deviation.Text}</li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
+                        <departure-item
+                            repeat.for="departure of departures.Buses"
+                            relative-time.two-way="relativeTime">
+                        </departure-item>
+                        <div class="stop-deviations">
+                            <div if.bind="bus.Deviations.length">
+                                <div repeat.for="deviation of bus.Deviations">${deviation.Text}</li>
+                            </div>
+                        </div>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
     </div>
 </template>

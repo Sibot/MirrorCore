@@ -1,9 +1,11 @@
-﻿<template bindable="forecast">
+<template>
     <require from='./valueConverters/WeatherIconValueConverter'></require>
     <require from='./valueConverters/CapitalizeValueConverter'></require>
     <div class="forecast-item">
-        <span class="forecast-time glyphicon glyphicon-time">${forecastTime | capitalize}</span>
-        <span class="forecast-temp wi wi-thermometer"> ${temperature}&deg;C</span>
-        <span class="forecast-icon wi ${icon | weatherIcon:isNight}"></span>
+        <span class="forecast-time-icon glyphicon glyphicon-time"></span>
+        <span class="forecast-time">${forecastTime | capitalize}</span>
+        <span class="forecast-temp-icon wi wi-thermometer"></span>
+        <span class="forecast-temp"> ${temperature}&deg;C</span>
+        <span class="forecast-icon pull-right wi ${icon | weatherIcon:isNight}"></span>
     </div>
 </template>

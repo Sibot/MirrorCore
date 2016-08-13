@@ -1,8 +1,0 @@
-﻿<template bindable="bus">
-    <div class="departureContainer row">
-        <div class="lineNumber col-md-2">${bus.LineNumber}</div>
-        <div class="destination col-md-5">${bus.Destination}</div>
-        <!--<div class="displayTime col-md-4">${bus.DisplayTime}</div>-->
-        <div class="actualTime col-md-5">${relativeNow.to(moment(bus.TimeTabledDateTime), true)}</div>
-    </div>
-</template>

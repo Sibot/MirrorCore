@@ -20,5 +20,4 @@ export class ForecastItem {
         this.icon = bindingContext.forecast.parameters[18].values[0];
         this.isNight = isNight;
     }
-
  }

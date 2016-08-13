@@ -1,4 +1,4 @@
-﻿body {
+body {
     padding-top: 50px;
     padding-bottom: 20px;
     background: #333;
@@ -15,17 +15,28 @@ input {
     color: #444;
 }
 footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
 }
 
 .container {
     width: 960px;
     margin: 0 auto;
-    overflow: hidden;
 }
 
-/*Clock*/
+.pane {
+    background: cornflowerblue;
+    border-radius: 2px;
+    box-shadow: black 1px 1px 16px 4px;
+    padding: 10px;
+}
+
+
+/*Time*/
+.time-pane {
+    background: darkslategray
+}
+
 .digital-clock {
     margin: 0 auto;
     text-shadow: 0 0 5px #00c6ff;
@@ -74,43 +85,40 @@ footer {
         opacity: 0;
     }
 }
-/*//Clock*/
+/*//Time*/
 
 /*Departures*/
-.departures-container ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.departures-pane {
+    background: #466;
 }
 
+.departure-item{
+    border: 1px #246 solid;
+    border-left: 1px #678 solid;
+    border-top: 1px #678 solid;
+}
+
+.departure-item.row {
+    margin: 0;
+}
 /*//Departures*/
 
 /*Forecast*/
-.forecast-item {
-    border: 1px white solid;
-    margin: 1px 0;
+.forecast-pane {
+    background: #578;
 }
 
+.forecast-item {
+    border: 1px #358 solid;
+    border-left: 1px #688 solid;
+    border-top: 1px #688 solid;
+}
+
+.pull-right.wi {
+    width: 1.7em;
+}
 /*//Forecast*/
 
 .hide {
     display: none;
-}
-
-.pane {
-    background: cornflowerblue;
-    box-shadow: black 5px 5px 5px;
-    padding: 10px;
-}
-
-.departures-pane {
-    background: cadetblue;
-}
-
-.time-pane {
-    background: darkslategray
-}
-
-.forecast-pane {
-    background: dodgerblue;
 }

@@ -1,12 +1,15 @@
 ﻿import {RequestService} from './RequestService';
+import {SettingsService} from './SettingsService';
 import {TimeService} from './TimeService';
+
 import {inject} from 'aurelia-framework';
 
-@inject(RequestService, TimeService)
+@inject(RequestService, TimeService, SettingsService)
 export class ForecastService {
-    constructor(requestService, timeService) {
+    constructor(requestService, timeService, settingsService) {
         this.requestService = requestService;
         this.timeService = timeService;
+        this.settings = settingsService.settings.forecastSettings;
     }
     
     getForecast(){
@@ -26,13 +29,18 @@ export class ForecastService {
                     return self.timeService.time;
                 }
 
+                function getSettings(){
+                    return self.settings;
+                }
+
                 data.timeSeries = data.timeSeries.map(function(v){
                     v.moment = makeMoment(v.validTime);
                     return v;
                 }).filter(function(v){
                     return v.moment.isAfter(getTime());
                 }).filter(function(v){
-                    return v.moment.hour() % 4 === 0;
+                    var settings = getSettings();
+                    return v.moment.hour() % settings.filterSeries === 0;
                 });
 
                 this.forecastData = data;

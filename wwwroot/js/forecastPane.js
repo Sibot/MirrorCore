@@ -1,17 +1,15 @@
 ﻿import {ForecastService} from './services/ForecastService';
+import {SettingsService} from './services/SettingsService';
 import {TimeService} from './services/TimeService';
 import {inject} from 'aurelia-framework';
 
-@inject(ForecastService, TimeService)
+@inject(ForecastService, TimeService, SettingsService)
 export class ForecastPane {
-    header = "Weather";
-    showSettings = false;
-    settings = {filterSeries: 2};
-
-    constructor(forecastService, timeService) {
+    constructor(forecastService, timeService, settingsService) {
         this.forecastService = forecastService;
         this.timeService = timeService;
-
+        this.settings = settingsService.settings.forecastSettings
+        this.heading = this.settings.heading;
         this.moment = this.timeService.moment;
         this.forecastService.getForecast()
                            .then(data => {
@@ -19,8 +17,8 @@ export class ForecastPane {
                            });
     }
 
+    showSettings = false;
     toggleSettings(){
-        console.log(this.ShowSettings);
         this.showSettings = !this.ShowSettings;
     }
 }

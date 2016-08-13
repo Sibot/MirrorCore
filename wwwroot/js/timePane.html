@@ -1,7 +1,7 @@
 ﻿<template>
     <require from='./valueConverters/CapitalizeValueConverter'></require>
     <div class="pane time-pane" id="timePane" if-bind="moment">
-        <h2>Time</h2>
+        <h2>${heading}<span class="btn btn-small forecast-settings pull-right glyphicon glyphicon-cog" click.delegate="showSettings = !showSettings"></span></h2>
         <div class="digital-clock">
             <div class="clock-date">
                 <span class="clock-day">${day | capitalize}</span>

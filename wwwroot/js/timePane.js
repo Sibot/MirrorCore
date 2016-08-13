@@ -1,9 +1,10 @@
 ﻿import {TimeService} from './services/TimeService';
+import {SettingsService} from './services/SettingsService';
 import {inject} from 'aurelia-framework';
 
-@inject(TimeService)
+@inject(TimeService, SettingsService)
 export class TimePane {
-    constructor(timeService) {
+    constructor(timeService, settingsService) {
         this.timeService = timeService;
         this.second = 0;
         this.minute = 0;
@@ -13,6 +14,8 @@ export class TimePane {
         this.day = '';
         this.month = '';
         this.year = 0;
+        this.settings = settingsService.settings.timeSettings;
+        this.heading = this.settings.heading;
     }
 
     attached(){
@@ -34,6 +37,11 @@ export class TimePane {
         this.second = this.time.format('ss');
         this.week = this.time.format('[Vecka] w');
         this.year = this.time.format('YYYY');
-
     }
+
+    showSettings = false;
+    toggleSettings(){
+        this.showSettings = !this.ShowSettings;
+    }
+
 }

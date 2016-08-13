@@ -10,11 +10,10 @@ export class TimeService {
     constructor(requestService, compositionTransaction) {
         moment.locale('sv');
 
-        this.compositionTransaction = compositionTransaction;
         this.moment = moment;
         this.requestService = requestService;
 
-        this.compositionTransactionNotifier = this.compositionTransaction.enlist();
+        this.compositionTransactionNotifier = compositionTransaction.enlist();
 
         let timeUrl = "/time/getCurrentTime";
 
