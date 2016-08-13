@@ -1,23 +1,34 @@
-﻿import {RequestService} from './RequestService';
+﻿import {inject, CompositionTransaction} from 'aurelia-framework';
+
+import {RequestService} from './RequestService';
 import moment from '../../lib/moment/moment';
 import sv from '../../lib/moment/locale/sv';
-import {inject} from 'aurelia-framework';
 
-@inject(RequestService)
+
+@inject(RequestService, CompositionTransaction)
 export class TimeService {
-    constructor(requestService) {
+    constructor(requestService, compositionTransaction) {
         moment.locale('sv');
+
+        this.compositionTransaction = compositionTransaction;
         this.moment = moment;
         this.requestService = requestService;
-    }
 
-    getTime(){
+        this.compositionTransactionNotifier = this.compositionTransaction.enlist();
+
         let timeUrl = "/time/getCurrentTime";
-        return this.requestService
+
+        this.requestService
             .getJson(timeUrl)
             .then(time => {
                 this.time = moment(time.dateString);
-                return this.time; 
+                this.compositionTransactionNotifier.done();
             });
+
+        setInterval(() => this.incrementSecond(), 1000);
+    }
+
+    incrementSecond() {
+        this.time.add(1, 's');
     }
 }

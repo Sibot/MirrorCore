@@ -10,6 +10,11 @@ export class RequestService {
 
     getJson(url) {
         return this.http.fetch(url)
-                        .then(response => response.json());
+                        .then(response => response.json())
+                        .catch(err => this.handleError);
+    }
+
+    handleError(err){
+        console.log(err);
     }
 }

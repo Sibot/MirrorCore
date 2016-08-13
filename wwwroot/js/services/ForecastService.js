@@ -1,10 +1,12 @@
 ﻿import {RequestService} from './RequestService';
+import {TimeService} from './TimeService';
 import {inject} from 'aurelia-framework';
 
-@inject(RequestService)
+@inject(RequestService, TimeService)
 export class ForecastService {
-    constructor(requestService) {
+    constructor(requestService, timeService) {
         this.requestService = requestService;
+        this.timeService = timeService;
     }
     
     getForecast(){
@@ -14,9 +16,25 @@ export class ForecastService {
         return this.requestService
             .getJson(forecastUrl)
             .then(data => {
-                data.timeSeries = data.timeSeries.filter(function(v, i, a){
-                    return i % 2 === 0;
-                })
+                var self = this;
+
+                function makeMoment(time){
+                    return self.timeService.moment(time);
+                }
+                
+                function getTime(){
+                    return self.timeService.time;
+                }
+
+                data.timeSeries = data.timeSeries.map(function(v){
+                    v.moment = makeMoment(v.validTime);
+                    return v;
+                }).filter(function(v){
+                    return v.moment.isAfter(getTime());
+                }).filter(function(v){
+                    return v.moment.hour() % 4 === 0;
+                });
+
                 this.forecastData = data;
                 return this.forecastData;
             });
