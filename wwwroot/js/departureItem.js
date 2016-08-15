@@ -40,6 +40,7 @@ export class DepartureItem {
     }
 
     notifyStateChange() {
+        console.log("Attempting to request Destruction!");
         if (this.onStateChange) {
             console.log("Child requests Destruction!");
             this.onStateChange();

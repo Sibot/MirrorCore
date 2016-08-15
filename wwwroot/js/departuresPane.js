@@ -37,14 +37,13 @@ export class DeparturesPane {
     }
 
     showSettings = false;
+    
     toggleSettings() {
         this.showSettings = !this.ShowSettings;
     }
     
     onChildStateChange(value, index, array) {
-        if (array.isArray() && value !== undefined) {
-            console.log("Child destruction initiated!");
-            array.splice(index, 1);
-        }
+        console.log("Child destruction initiated!");
+        array.splice(index, 1);
     }
 }

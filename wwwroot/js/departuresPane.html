@@ -22,7 +22,7 @@
                     <departure-item
                         repeat.for="departure of departures.Buses"
                         relative-time.one-way="relativeTime"
-                        onStateChange.call="onChildStateChange(departure, $index, departures.Buses)">
+                        on-state-change.call="onChildStateChange(departure, $index, departures.Buses)">
                     </departure-item>
                     <div class="stop-deviations">
                         <div if.bind="bus.Deviations.length">
