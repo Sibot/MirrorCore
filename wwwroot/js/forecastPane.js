@@ -11,14 +11,19 @@ export class ForecastPane {
         this.settings = settingsService.settings.forecastSettings
         this.heading = this.settings.heading;
         this.moment = this.timeService.moment;
+        this.populateForecast();
+        setInterval(() => this.populateForecast(), this.settings.refreshTime * 60000);
+    }
+
+
+    showSettings = false;
+    populateForecast() {
         this.forecastService.getForecast()
                            .then(data => {
                                this.forecastData = data;
                            });
     }
-
-    showSettings = false;
-    toggleSettings(){
+    toggleSettings() {
         this.showSettings = !this.ShowSettings;
     }
 }

@@ -14,28 +14,37 @@ export class DeparturesPane {
         this.settings = settingsService.settings.departuresSettings;
         this.heading = this.settings.heading;
 
+        this.populateDepartures();
+        setInterval(() => this.populateDepartures(), this.settings.refreshTime * 60000);
+    }
+
+    populateDepartures() {
+        if (this.intervalId) {
+            clearInterval(this.intervalId);
+        }
+
         this.departuresService.getDepartures()
                               .then(data => {
                                   this.data = data;
                                   this.departures = data.ResponseData;
                                   this.relativeTime = this.timeService.moment(this.departures.LatestUpdate).add(this.departures.DataAge, 's');
-                                  setInterval(() => this.incrementSecond(), 1000);
-                                  console.log("DeparturesPane", this.relativeTime);
+                                  this.intervalId = setInterval(() => this.incrementSecond(), 1000);
                                   this.compositionTransactionNotifier.done();
                               });
     }
-
     incrementSecond() {
         this.relativeTime.add(1, 's');
     }
 
-    recalculateData() {
-        //TODO: update actual or display-Time
-    }
-
     showSettings = false;
-    toggleSettings(){
+    toggleSettings() {
         this.showSettings = !this.ShowSettings;
     }
-
+    
+    onChildStateChange(value, index, array) {
+        if (array.isArray() && value !== undefined) {
+            console.log("Child destruction initiated!");
+            array.splice(index, 1);
+        }
+    }
 }

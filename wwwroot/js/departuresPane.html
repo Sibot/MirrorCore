@@ -1,9 +1,9 @@
 ﻿<template>
     <require from="./departureItem"></require>
     <div class="pane departures-pane">
-        <header class="row">
-            <h2 class="heading col-md-10">${heading}</h2>
-            <span class="btn btn-small forecast-settings pull-right glyphicon glyphicon-cog col-md-2" click.delegate="showSettings = !showSettings"></span>
+        <header class="header">
+            <h2 class="heading">${heading}<span class="btn btn-small forecast-settings pull-right glyphicon glyphicon-cog" click.delegate="showSettings = !showSettings"></span></h2>
+            
         </header>
         <div class="departures-container">
             <div class="stop-deviations-container" if.bind="departures.StopPointDeviations.length">
@@ -12,22 +12,21 @@
                 </ul>
             </div>
             <div class="transportations">
-                <div class="transportation" if.bind="departures.Buses">
-                    <div class="transportation-container">
-                        <h3>Bus</h3>
-                        <div class="departures-title row">
-                            <span class="line-number-legend col-md-2">Line</span>
-                            <span class="destination-legend col-md-4">Destination</span>
-                            <span class="actual-time-legend col-md-6">Departure</span>
-                        </div>
-                        <departure-item
-                            repeat.for="departure of departures.Buses"
-                            relative-time.two-way="relativeTime">
-                        </departure-item>
-                        <div class="stop-deviations">
-                            <div if.bind="bus.Deviations.length">
-                                <div repeat.for="deviation of bus.Deviations">${deviation.Text}</li>
-                            </div>
+                <div class="transportation" if.bind="departures.Buses.length">
+                    <h3>Bus</h3>
+                    <div class="departures-title">
+                        <span class="line-number-legend">Line</span>
+                        <span class="destination-legend">Destination</span>
+                        <span class="actual-time-legend pull-right">Departure</span>
+                    </div>
+                    <departure-item
+                        repeat.for="departure of departures.Buses"
+                        relative-time.one-way="relativeTime"
+                        onStateChange.call="onChildStateChange(departure, $index, departures.Buses)">
+                    </departure-item>
+                    <div class="stop-deviations">
+                        <div if.bind="bus.Deviations.length">
+                            <div repeat.for="deviation of bus.Deviations">${deviation.Text}</li>
                         </div>
                     </div>
                 </div>
