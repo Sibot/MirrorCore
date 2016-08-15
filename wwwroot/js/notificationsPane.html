@@ -1,0 +1,10 @@
+<template>
+    <div class="pane notifications-pane" if.bind="notifications.length">
+        <div class="notification-item" repeat.for="notification of notifications">
+            <div class="notification-message ${notification.severity}">
+                <span class="glyphicons glyphicon-${notification.severity} notification-message-icon"></span>
+                <span class="notification-message-text">${notification.message}</span>
+            </div>
+        </div>
+    </div>
+</template>

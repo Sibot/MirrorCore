@@ -14,6 +14,8 @@ export class DeparturesService {
             .then(departures => {
                 this.departuresData = departures;
                 return departures;
-            }); 
+            });
     }
+
+    errorMessage = {"StatusCode":5322,"Message":"Could not retrive information for buses, trains, trams or metro.","ExecutionTime":10026,"ResponseData":{"LatestUpdate":"0001-01-01T00:00:00","DataAge":0,"Metros":[],"Buses":[],"Trains":[],"Trams":[],"Ships":[],"StopPointDeviations":[]}};
 }

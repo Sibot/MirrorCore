@@ -2,8 +2,8 @@
     <require from="./departureItem"></require>
     <div class="pane departures-pane">
         <header class="header">
-            <h2 class="heading">${heading}<span class="btn btn-small forecast-settings pull-right glyphicon glyphicon-cog" click.delegate="showSettings = !showSettings"></span></h2>
-            
+            <h2 class="heading" i18N="departure_plural">Heading</h2>
+            <span class="btn btn-small forecast-settings pull-right glyphicon glyphicon-cog" click.delegate="showSettings = !showSettings"></span>
         </header>
         <div class="departures-container">
             <div class="stop-deviations-container" if.bind="departures.StopPointDeviations.length">
@@ -13,11 +13,11 @@
             </div>
             <div class="transportations">
                 <div class="transportation" if.bind="departures.Buses.length">
-                    <h3>Bus</h3>
+                    <h3 i18N="bus">TransportationMode</h3>
                     <div class="departures-title">
-                        <span class="line-number-legend">Line</span>
-                        <span class="destination-legend">Destination</span>
-                        <span class="actual-time-legend pull-right">Departure</span>
+                        <span class="line-number-legend" i18N="departure-line">Line</span>
+                        <span class="destination-legend" i18N="departure-destination">Destination</span>
+                        <span class="actual-time-legend pull-right" i18N="departure-time">Departure</span>
                     </div>
                     <departure-item
                         repeat.for="departure of departures.Buses"

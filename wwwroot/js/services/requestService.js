@@ -2,15 +2,22 @@
 import {HttpClient} from 'aurelia-fetch-client';
 import 'fetch';
 
-@inject(HttpClient)
+import {NotificationsService} from './NotificationsService';
+
+@inject(HttpClient, NotificationsService)
 export class RequestService {
-    constructor(http) {
+    constructor(http, notificationsService) {
         this.http = http;
+        this.notificationsService = notificationsService;
     }
 
     getJson(url) {
         return this.http.fetch(url)
-                        .then(response => response.json())
+                        .then(response => {
+                            var result = response.json(); 
+                            this.notificationsService.add({message: 'Fetched data from ' + url, severity: 'info'});
+                            return result;
+                        })
                         .catch(err => this.handleError);
     }
 

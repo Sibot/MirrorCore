@@ -118,7 +118,23 @@ footer {
     width: 1.7em;
 }
 /*//Forecast*/
-
+/*Notifications*/
+.notifications-pane {
+    width: 300px;
+    background: #f75 ;
+    padding: 15px;
+}
+.notification-item {
+    border: 1px #a53 solid;
+    border-left: 1px #f86 solid;
+    border-top: 1px #f86 solid;
+}
+/*//Notifications*/
 .hide {
     display: none;
 }
+/*Header*/
+.pane .header .heading {
+    display: inline;
+}
+/*//Header*/

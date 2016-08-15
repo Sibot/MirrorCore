@@ -1,0 +1,15 @@
+{
+    "settings": "inställningar",
+    "weather": "väder",
+    "forecast": "prognos",
+    "departure": "avgång",
+    "departure_plural": "avgångar",
+    "departures_none": "inga avgångar",
+    "departure-line": "linje",
+    "departure-destination": "ändhållplats",
+    "departure-time": "avgångstid",
+    "bus": "buss",
+    "bus_plural": "bussar",
+    "time": "tid",
+    "week": "vecka"
+}

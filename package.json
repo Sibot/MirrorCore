@@ -7,8 +7,11 @@
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.0.0",
       "aurelia-framework": "npm:aurelia-framework@^1.0.1",
+      "aurelia-i18n": "npm:aurelia-i18n@^1.0.0",
+      "aurelia-notification": "npm:aurelia-notification@^1.0.0-rc5",
       "core-js": "npm:core-js@^1.1.4",
-      "fetch": "github:github/fetch@^1.0.0"
+      "fetch": "github:github/fetch@^1.0.0",
+      "i18next-xhr-backend": "npm:i18next-xhr-backend@^1.1.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

@@ -1,0 +1,15 @@
+{
+    "settings": "settings",
+    "weather": "weather",
+    "forecast": "forecast",
+    "departure": "departure",
+    "departure_plural": "departures",
+    "departures_none": "no departures",
+    "departure-line": "line",
+    "departure-destination": "destination",
+    "departure-time": "departure",
+    "bus": "bus",
+    "bus_plural": "buses",
+    "time": "time",
+    "week": "week"
+}
