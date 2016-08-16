@@ -1,10 +1,13 @@
-﻿import {RequestService} from './RequestService';
-import {inject} from 'aurelia-framework';
+﻿import {inject} from 'aurelia-framework';
 
-@inject(RequestService)
+import {RequestService} from './RequestService';
+import {NotificationsService} from './NotificationsService';
+
+@inject(RequestService, NotificationsService)
 export class DeparturesService {
-    constructor(requestService) {
+    constructor(requestService, notificationsService) {
         this.requestService = requestService;
+        this.notificationsService = notificationsService;
     }
 
     getDepartures(){
@@ -12,7 +15,11 @@ export class DeparturesService {
         return this.requestService
             .getJson(departureUrl)
             .then(departures => {
+                if (departures.StatusCode !== 0){
+                    this.notificationsService.add({message: departures.Message, severity: 'warn', context: departures }); 
+                }
                 this.departuresData = departures;
+                this.notificationsService.add({message: 'Departures updated!', severity: 'info'});
                 return departures;
             });
     }

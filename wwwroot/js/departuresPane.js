@@ -10,8 +10,7 @@ export class DeparturesPane {
     constructor(compositionTransaction, i18N, departuresService, timeService, settingsService) {
         this.compositionTransactionNotifier = compositionTransaction.enlist();
         this.i18N = i18N;
-        this.i18N
-            .setLocale('en');
+        this.i18N.setLocale('en');
 
         this.departuresService = departuresService;
         this.timeService = timeService;
@@ -19,7 +18,7 @@ export class DeparturesPane {
         //this.heading = this.settings.heading;
 
         this.populateDepartures();
-        setInterval(() => this.populateDepartures(), this.settings.refreshTime * 60000);
+        setInterval(() => this.populateDepartures(), this.settings.refreshTime * 60000); //Minutes
     }
 
     populateDepartures() {
@@ -32,10 +31,12 @@ export class DeparturesPane {
                                   this.data = data;
                                   this.departures = data.ResponseData;
                                   this.relativeTime = this.timeService.moment(this.departures.LatestUpdate).add(this.departures.DataAge, 's');
+                                  this.lastUpdated = this.relativeTime.format('HH:mm:ss');
                                   this.intervalId = setInterval(() => this.incrementSecond(), 1000);
                                   this.compositionTransactionNotifier.done();
                               });
     }
+
     incrementSecond() {
         this.relativeTime.add(1, 's');
     }

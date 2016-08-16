@@ -11,5 +11,6 @@
     "bus": "bus",
     "bus_plural": "buses",
     "time": "time",
-    "week": "week"
+    "week": "week",
+    "lastupdated": "last updated"
 }

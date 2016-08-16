@@ -1,4 +1,6 @@
 {
+  "name": "MirrorCore",
+  "version": "0.1",
   "jspm": {
     "directories": {
       "baseURL": "wwwroot"

@@ -15,7 +15,7 @@ export function configure(aurelia) {
           backend: {                                  // <-- configure backend settings
             loadPath: './locales/{{lng}}/{{ns}}.json', // <-- XHR settings for where to get the files from
           },
-          lng : 'en',
+          lng : 'sv',
           attributes : ['t','i18n'],
           fallbackLng : 'en',
           debug : true

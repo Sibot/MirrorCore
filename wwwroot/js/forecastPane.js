@@ -1,7 +1,8 @@
-﻿import {ForecastService} from './services/ForecastService';
+﻿import {inject} from 'aurelia-framework';
+
+import {ForecastService} from './services/ForecastService';
 import {SettingsService} from './services/SettingsService';
 import {TimeService} from './services/TimeService';
-import {inject} from 'aurelia-framework';
 
 @inject(ForecastService, TimeService, SettingsService)
 export class ForecastPane {
@@ -17,6 +18,7 @@ export class ForecastPane {
 
 
     showSettings = false;
+
     populateForecast() {
         this.forecastService.getForecast()
                            .then(data => {

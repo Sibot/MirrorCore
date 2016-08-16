@@ -11,5 +11,6 @@
     "bus": "buss",
     "bus_plural": "bussar",
     "time": "tid",
-    "week": "vecka"
+    "week": "vecka",
+    "lastupdated": "senast uppdaterad"
 }

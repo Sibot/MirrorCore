@@ -1,12 +1,14 @@
-﻿import {RequestService} from './RequestService';
+﻿import {NotificationsService} from './NotificationsService';
+import {RequestService} from './RequestService';
 import {SettingsService} from './SettingsService';
 import {TimeService} from './TimeService';
 
 import {inject} from 'aurelia-framework';
 
-@inject(RequestService, TimeService, SettingsService)
+@inject(NotificationsService, RequestService, TimeService, SettingsService)
 export class ForecastService {
-    constructor(requestService, timeService, settingsService) {
+    constructor(notificationsService, requestService, timeService, settingsService) {
+        this.notificationsService = notificationsService;
         this.requestService = requestService;
         this.timeService = timeService;
         this.settings = settingsService.settings.forecastSettings;
@@ -21,15 +23,15 @@ export class ForecastService {
             .then(data => {
                 var self = this;
 
-                function makeMoment(time){
+                function makeMoment(time) {
                     return self.timeService.moment(time);
                 }
                 
-                function getTime(){
+                function getTime() {
                     return self.timeService.time;
                 }
 
-                function getSettings(){
+                function getSettings() {
                     return self.settings;
                 }
 
@@ -42,7 +44,9 @@ export class ForecastService {
                     var settings = getSettings();
                     return v.moment.hour() % settings.filterSeries === 0;
                 });
-
+                
+                this.notificationsService.add({message: 'Forecast updated!', severity: 'info'});
+                
                 this.forecastData = data;
                 return this.forecastData;
             });
