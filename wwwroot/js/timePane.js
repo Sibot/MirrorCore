@@ -15,16 +15,16 @@ export class TimePane {
         this.month = '';
         this.year = 0;
         this.settings = settingsService.settings.timeSettings;
-        this.heading = this.settings.heading;
     }
 
     attached(){
-        this.time = this.timeService.time;
+        this.time = this.timeService.getTime();
         setInterval(() => this.incrementSecond(), 1000);
     }
 
     incrementSecond() {
-        this.time = this.timeService.time;
+        this.time = this.timeService.getTime();
+        this.lastUpdated = this.timeService.lastUpdated.format("HH:mm:ss");
         this.recomputeData();
     }
 

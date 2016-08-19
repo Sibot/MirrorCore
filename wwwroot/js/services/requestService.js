@@ -18,7 +18,7 @@ export class RequestService {
                             var result = response.json(); 
                             return result;
                         })
-                        .catch(err => this.handleError);
+                        .catch(this.handleError);
     }
 
     handleError(err){

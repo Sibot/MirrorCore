@@ -1,13 +1,16 @@
 ﻿import {inject} from 'aurelia-framework';
 
-import {RequestService} from './RequestService';
 import {NotificationsService} from './NotificationsService';
+import {RequestService} from './RequestService';
+import {TimeService} from './TimeService';
 
-@inject(RequestService, NotificationsService)
+@inject(NotificationsService, RequestService, TimeService)
 export class DeparturesService {
-    constructor(requestService, notificationsService) {
+    constructor(notificationsService, requestService, timeService) {
         this.requestService = requestService;
         this.notificationsService = notificationsService;
+        this.timeService = timeService;
+        this.lastUpdated = this.timeService.getTime();
     }
 
     getDepartures(){

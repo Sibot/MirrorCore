@@ -1,7 +1,7 @@
 {
     "settings": "inställningar",
     "weather": "väder",
-    "forecast": "prognos",
+    "forecast": "väderprognos",
     "departure": "avgång",
     "departure_plural": "avgångar",
     "departures_none": "inga avgångar",

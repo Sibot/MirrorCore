@@ -1,7 +1,9 @@
 ﻿<template>
+    <require from="./partials/pane-header.html"></require>
+    <require from="./partials/pane-footer.html"></require>
     <require from='./valueConverters/CapitalizeValueConverter'></require>
-    <div class="pane time-pane" id="timePane" if-bind="moment">
-        <h2>${heading}<span class="btn btn-small forecast-settings pull-right glyphicon glyphicon-cog" click.delegate="showSettings = !showSettings"></span></h2>
+    <div class="pane time-pane clearfix" id="timePane" if-bind="moment">
+        <pane-header i18n-heading="time"></pane-header>
         <div class="digital-clock">
             <div class="clock-date">
                 <span class="clock-day">${day | capitalize}</span>
@@ -12,5 +14,6 @@
             <div class="clock-week">${week}</div>
             <div class="clock-time">${hour}<b class="clock-separator-blink">:</b>${minute}<b class="clock-separator-blink">:</b>${second}</div>
         </div>
+        <pane-footer last-updated.bind="lastUpdated"></pane-footer>
     </div>
 </template>

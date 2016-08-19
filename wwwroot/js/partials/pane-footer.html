@@ -1,0 +1,6 @@
+<template bindable="lastUpdated">
+    <require from='../valueConverters/CapitalizeValueConverter'></require>
+    <div class="last-updated small pull-right text-muted">
+        <span>${'lastupdated' | t | capitalize}: </span><span>${lastUpdated}</span>
+    </div>
+</template>

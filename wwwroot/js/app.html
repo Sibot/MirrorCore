@@ -4,22 +4,22 @@
     <require from="./departuresPane"></require>
     <require from="./notificationsPane"></require>
     <div class="container body-content">
-        <div class="row">
-            <div class="col-md-4" id="leftPane">
+        <div class="flex-container">
+            <div class="pane-container column third" id="leftPane">
                 <departures-pane></departures-pane>
             </div>
-            <div class="col-md-4" id="centerPane">
+            <div class="pane-container column third" id="centerPane">
                 <time-pane></time-pane>
-                <div class="row">
-                    <div class="col-md-6" id="todoPane">
+                <div class="flex-container">
+                    <div class="pane-container column half" id="todoPane">
                         <h2>Todo</h2>
                     </div>
-                    <div class="col-md-6" id="listPane">
+                    <div class="pane-container column half" id="listPane">
                         <h2>List</h2>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" id="rightPane">
+            <div class="pane-container column third" id="rightPane">
                 <forecast-pane></forecast-pane>
             </div>
         </div>

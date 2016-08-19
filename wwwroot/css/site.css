@@ -11,9 +11,11 @@ body {
     background-color:#282828;
     background-size:16px 16px;
 }
+
 input {
     color: #444;
 }
+
 footer {
     position: relative;
     bottom: 0;
@@ -22,6 +24,30 @@ footer {
 .container {
     width: 960px;
     margin: 0 auto;
+    padding: 15px;
+}
+
+.clearfix:after, .clearfix:before, .container:after {
+    display: table;
+    content: " ";
+}
+
+.fourth {
+    min-width: 25%;
+}
+
+.third {
+    min-width: 33%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.half {
+    min-width: 50%;
+}
+
+.clearfix:after {
+    clear: both;
 }
 
 .pane {
@@ -31,6 +57,30 @@ footer {
     padding: 10px;
 }
 
+.item {
+    padding: 0 5px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.small{
+    font-size: 75%; 
+}
+.text-muted {
+    color: #888;
+}
+
+.column {
+    padding-right: 15px;
+    padding-left: 15px;
+}
 
 /*Time*/
 .time-pane {
@@ -93,14 +143,11 @@ footer {
 }
 
 .departure-item{
-    border: 1px #246 solid;
-    border-left: 1px #678 solid;
-    border-top: 1px #678 solid;
+    border: 1px #244 solid;
+    border-left: 1px #688 solid;
+    border-top: 1px #688 solid;
 }
 
-.departure-item.row {
-    margin: 0;
-}
 /*//Departures*/
 
 /*Forecast*/
@@ -109,14 +156,11 @@ footer {
 }
 
 .forecast-item {
-    border: 1px #358 solid;
+    border: 1px #356 solid;
     border-left: 1px #688 solid;
     border-top: 1px #688 solid;
 }
 
-.pull-right.wi {
-    width: 1.7em;
-}
 /*//Forecast*/
 /*Notifications*/
 .notifications-pane {
@@ -124,6 +168,7 @@ footer {
     background: #f75 ;
     padding: 15px;
 }
+
 .notification-item {
     border: 1px #a53 solid;
     border-left: 1px #f86 solid;
@@ -136,5 +181,8 @@ footer {
 /*Header*/
 .pane .header .heading {
     display: inline;
+}
+.pane .header {
+    margin-bottom: 10px;
 }
 /*//Header*/

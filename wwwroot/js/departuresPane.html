@@ -1,10 +1,10 @@
 ﻿<template>
+    <require from="./partials/pane-header.html"></require>
+    <require from="./partials/pane-footer.html"></require>
     <require from="./departureItem"></require>
+    <require from='./valueConverters/CapitalizeValueConverter'></require>
     <div class="pane departures-pane">
-        <header class="header">
-            <h2 class="heading" i18N="departure_plural">Heading</h2>
-            <span class="btn btn-small forecast-settings pull-right glyphicon glyphicon-cog" click.delegate="showSettings = !showSettings"></span>
-        </header>
+        <pane-header i18n-heading="departure_plural"></pane-header>
         <div class="departures-container clearfix">
             <div class="stop-deviations-container" if.bind="departures.StopPointDeviations.length">
                 <ul class="stop-deviations">
@@ -13,11 +13,11 @@
             </div>
             <div class="transportations">
                 <div class="transportation" if.bind="departures.Buses.length">
-                    <h3 i18N="bus">TransportationMode</h3>
-                    <div class="departures-title">
-                        <span class="line-number-legend" i18N="departure-line">Line</span>
-                        <span class="destination-legend" i18N="departure-destination">Destination</span>
-                        <span class="actual-time-legend pull-right" i18N="departure-time">Departure</span>
+                    <h3>${'bus' | t | capitalize}</h3>
+                    <div class="flex-container departures-title">
+                        <span class="line-number-legend item">${'departure-line' | t | capitalize}</span>
+                        <span class="destination-legend item">${'departure-destination' | t | capitalize}</span>
+                        <span class="actual-time-legend item pull-right">${'departure-time' | t | capitalize}</span>
                     </div>
                     <departure-item
                         repeat.for="departure of departures.Buses"
@@ -32,8 +32,6 @@
                 </div>
             </div>
         </div>
-        <div class="last-updated small pull-right text-muted">
-            <span i18n="lastupdated">LastUpdated</span>: <span>${lastUpdated}</span>
-        </div>
+        <pane-footer last-updated.bind="lastUpdated"></pane-footer>
     </div>
 </template>
