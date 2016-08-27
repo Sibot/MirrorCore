@@ -14,17 +14,24 @@ export class ForecastPane {
         this.settings = settingsService.settings.forecastSettings
         this.heading = this.settings.heading;
         this.populateForecast();
+        this.serviceActive = false;
         setInterval(() => this.populateForecast(), this.settings.refreshTime * 60000);
     }
 
     showSettings = false;
-
+    //TODO: remove old forecasts once they're dead
     populateForecast() {
         this.forecastService.getForecast()
-            .then(data => this.forecastData = data);
+            .then(data => {
+                this.forecastData = data
+                this.serviceActive = true;
+            }).catch((err) => {
+                this.serviceActive = false;
+            });
         this.timeService.getTime()
             .then(time => this.lastUpdated = time.format("HH:mm:ss"));
     }
+
     toggleSettings() {
         this.showSettings = !this.ShowSettings;
     }

@@ -3,6 +3,7 @@
     <require from="./partials/pane-footer.html"></require>
     <require from='./valueConverters/CapitalizeValueConverter'></require>
     <div class="pane time-pane clearfix" id="timePane" if-bind="moment">
+        <div class="status-indicator status-indicator-${serviceActive ? 'active': 'inactive'} pull-right"></div>
         <pane-header i18n-heading="time"></pane-header>
         <div class="digital-clock">
             <div class="clock-date">

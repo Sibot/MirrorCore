@@ -5,6 +5,7 @@
     <require from="./forecastItem"></require>
     <require from="./forecastSettings"></require>
     <div class="pane forecast-pane clearfix" id="forecastPane">
+        <div class="status-indicator status-indicator-${serviceActive ? 'active': 'inactive'} pull-right"></div>
         <pane-header i18n-heading="forecast"></pane-header>
         <forecast-settings settings.two-way="settings" show.bind="showSettings"></forecast-settings>
         <forecast-item repeat.for="forecast of forecastData.timeSeries"></forecast-item>

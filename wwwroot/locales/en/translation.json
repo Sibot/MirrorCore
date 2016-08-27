@@ -9,6 +9,7 @@
     "departure-destination": "destination",
     "departure-time": "departure",
     "bus": "bus",
+    "bus_none": "no buses",
     "bus_plural": "buses",
     "time": "time",
     "week": "week",

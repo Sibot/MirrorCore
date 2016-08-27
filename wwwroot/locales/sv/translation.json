@@ -9,6 +9,7 @@
     "departure-destination": "ändhållplats",
     "departure-time": "avgångstid",
     "bus": "buss",
+    "bus_none": "Inga bussar",
     "bus_plural": "bussar",
     "time": "tid",
     "week": "vecka",

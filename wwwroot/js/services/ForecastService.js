@@ -39,7 +39,7 @@ export class ForecastService {
                     v.moment = makeMoment(v.validTime);
                     return v;
                 }).filter(function(v){
-                    return v.moment.isAfter(getTime());
+                    return v.moment.isAfter(getTime()); // TODO: Should show the last forecast before now
                 }).filter(function(v){
                     var settings = getSettings();
                     return v.moment.hour() % settings.filterSeries === 0;
@@ -49,6 +49,9 @@ export class ForecastService {
                 
                 this.forecastData = data;
                 return this.forecastData;
+            }).catch((err) => {
+                this.notificationsService.add({message: 'Forecast update failed!', severity: 'warm', context: err});
+                throw Error(err);
             });
     }
 }

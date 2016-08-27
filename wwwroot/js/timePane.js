@@ -1,10 +1,10 @@
 ﻿import {TimeService} from './services/TimeService';
 import {SettingsService} from './services/SettingsService';
-import {inject} from 'aurelia-framework';
+import {inject, BindingEngine} from 'aurelia-framework';
 
-@inject(TimeService, SettingsService)
+@inject(TimeService, SettingsService, BindingEngine)
 export class TimePane {
-    constructor(timeService, settingsService) {
+    constructor(timeService, settingsService, bindingEngine) {
         this.timeService = timeService;
         this.second = 0;
         this.minute = 0;
@@ -15,17 +15,29 @@ export class TimePane {
         this.month = '';
         this.year = 0;
         this.settings = settingsService.settings.timeSettings;
+        this.serviceActive = false;
+
+        let subscription = bindingEngine.propertyObserver(this.timeService, 'time')
+                                        .subscribe((newValue, oldValue) => console.log(oldValue ,newValue));
     }
 
     attached(){
-        this.time = this.timeService.getTime();
-        setInterval(() => this.incrementSecond(), 1000);
+        this.timeService.getTime().then((time) => {
+            this.time = time;
+            setInterval(() => this.incrementSecond(), 1000);
+            this.serviceActive = true;
+        }).catch((err) => {
+            this.serviceActive = false;
+            console.log(err);
+        });
     }
 
     incrementSecond() {
-        this.time = this.timeService.getTime();
-        this.lastUpdated = this.timeService.lastUpdated.format("HH:mm:ss");
-        this.recomputeData();
+        this.timeService.getTime().then((time) => {
+            this.time = time;
+            this.lastUpdated = this.timeService.getLastUpdated().format('HH:mm:ss'); 
+            this.recomputeData();
+        });
     }
 
     recomputeData() {

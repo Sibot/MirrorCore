@@ -1,7 +1,6 @@
 import {inject} from 'aurelia-framework';
 
 export class NotificationsService {
-    
     notifications = [];
 
     add(notification) {

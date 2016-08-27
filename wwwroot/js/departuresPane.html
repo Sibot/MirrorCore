@@ -4,6 +4,7 @@
     <require from="./departureItem"></require>
     <require from='./valueConverters/CapitalizeValueConverter'></require>
     <div class="pane departures-pane">
+        <div class="status-indicator status-indicator-${serviceActive ? 'active': 'inactive'} pull-right"></div>
         <pane-header i18n-heading="departure_plural"></pane-header>
         <div class="departures-container clearfix">
             <div class="stop-deviations-container" if.bind="departures.StopPointDeviations.length">
@@ -12,6 +13,9 @@
                 </ul>
             </div>
             <div class="transportations">
+                <div class="no-transportation" if.bind="!departures.Buses.length">
+                    <h3>${'bus_none' | t | capitalize}</h3>
+                </div>
                 <div class="transportation" if.bind="departures.Buses.length">
                     <h3>${'bus' | t | capitalize}</h3>
                     <div class="flex-container departures-title">

@@ -7,16 +7,16 @@ namespace MirrorCore.Utils
     {
         public static string Get(string url, bool fakeUserAgent = false)
         {
-            using (var timeApi = new HttpClient())
+            using (var client = new HttpClient())
             {
                 if (fakeUserAgent)
                 {
                     var userAgent = new ProductInfoHeaderValue("DotNet-Core-HttpClient", "1.0");
-                    timeApi.DefaultRequestHeaders.UserAgent.Add(userAgent);
+                    client.DefaultRequestHeaders.UserAgent.Add(userAgent);
                 }
 
-                var time = timeApi.GetStringAsync(url).Result;
-                return time;
+                var result = client.GetStringAsync(url).Result;
+                return result;
             }
 
         }

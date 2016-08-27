@@ -12,13 +12,14 @@ export class DeparturesPane {
 
     constructor(i18N, departuresService, timeService, settingsService) {
         this.i18N = i18N;
-        this.i18N.setLocale('en');
 
         this.departuresService = departuresService;
         this.timeService = timeService;
         this.settings = settingsService.settings.departuresSettings;
 
         this.populateDepartures();
+        this.serviceActive = false;
+        
         setInterval(() => this.populateDepartures(), this.settings.refreshTime * 60000); //Minutes
     }
 
@@ -34,8 +35,12 @@ export class DeparturesPane {
                                   this.relativeTime = this.timeService.moment(this.departures.LatestUpdate)
                                                                       .add(this.departures.DataAge, 's');
                                   this.lastUpdated = this.timeService.getTime()
-                                      .then(time => this.lastUpdated = time.format("HH:mm:ss"));
+                                      .then((time) => { this.lastUpdated = time.format("HH:mm:ss")});
                                   this.intervalId = setInterval(() => this.incrementSecond(), 1000);
+                                  this.serviceActive = true;
+                              }).catch((err) => {
+                                  this.serviceActive = false;
+                                  console.log(err);
                               });
     }
 

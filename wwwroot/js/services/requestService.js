@@ -18,12 +18,9 @@ export class RequestService {
                             var result = response.json(); 
                             return result;
                         })
-                        .catch(this.handleError);
-    }
-
-    handleError(err){
-        let error = err.json();
-        this.notificationsService.add( { message: error, severity:'warn', context: err } );
-        console.log(err);
+                        .catch((err) => {
+                            this.notificationsService.add( { message: err, severity:'warn', context: err } );
+                            console.log(err);
+                        });
     }
 }

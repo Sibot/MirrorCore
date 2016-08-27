@@ -20,6 +20,7 @@ export class DeparturesService {
             .then(departures => {
                 if (departures.StatusCode !== 0){
                     this.notificationsService.add({message: departures.Message, severity: 'warn', context: departures }); 
+                    throw Error(departures.Message);
                 }
                 this.departuresData = departures;
                 this.notificationsService.add({message: 'Departures updated!', severity: 'info'});

@@ -3,29 +3,31 @@
     <require from="./timePane"></require>
     <require from="./departuresPane"></require>
     <require from="./notificationsPane"></require>
-    <div class="container body-content">
+    <require from="./settingsView"></require>
+    <settings-view></settings-view>
+    <div class="container body-content membrane">
         <div class="flex-container">
-            <div class="pane-container column third" id="leftPane">
+            <div class="pane-container column third">
                 <departures-pane></departures-pane>
             </div>
-            <div class="pane-container column third" id="centerPane">
+            <div class="pane-container column third">
                 <time-pane></time-pane>
-                <div class="flex-container">
-                    <div class="pane-container column half" id="todoPane">
-                        <h2>Todo</h2>
-                    </div>
-                    <div class="pane-container column half" id="listPane">
-                        <h2>List</h2>
-                    </div>
-                </div>
             </div>
-            <div class="pane-container column third" id="rightPane">
+            <div class="pane-container column third">
                 <forecast-pane></forecast-pane>
             </div>
         </div>
+        <notifications-pane></notifications-pane>
     </div>
-    <notifications-pane></notifications-pane>
-    <footer>
-        <p>&copy; 2016 - MirrorCore</p>
+    <div class="flex-container">
+        <!--<div class="pane-container column half" id="todoPane">
+            <h2>Todo</h2>
+        </div>
+        <div class="pane-container column half" id="listPane">
+            <h2>List</h2>
+        </div>-->
+    </div>
+    <footer class="small">
+        <p>&copy; 2016 - TobiNET</p>
     </footer>
 </template>

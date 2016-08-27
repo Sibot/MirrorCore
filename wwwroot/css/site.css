@@ -1,15 +1,8 @@
 body {
-    padding-top: 50px;
+    padding-top: 20px;
     padding-bottom: 20px;
-    background: #333;
-    color: #fff;
-    background:
-    radial-gradient(black 15%, transparent 16%) 0 0,
-    radial-gradient(black 15%, transparent 16%) 8px 8px,
-    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-    background-color:#282828;
-    background-size:16px 16px;
+    background: #090909;
+    color: #ccc;
 }
 
 input {
@@ -27,9 +20,28 @@ footer {
     padding: 15px;
 }
 
+.membrane {
+    background:
+        radial-gradient(black 15%, transparent 16%) 0 0,
+        radial-gradient(black 15%, transparent 16%) 8px 8px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background-color:#282828;
+    background-size:16px 16px;
+    box-shadow: inset 0 0 5px 5px black;
+}
+
 .clearfix:after, .clearfix:before, .container:after {
     display: table;
     content: " ";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.hide {
+     display: none;
 }
 
 .fourth {
@@ -46,12 +58,8 @@ footer {
     min-width: 50%;
 }
 
-.clearfix:after {
-    clear: both;
-}
-
 .pane {
-    background: cornflowerblue;
+    background: #222;
     border-radius: 2px;
     box-shadow: black 1px 1px 16px 4px;
     padding: 10px;
@@ -62,8 +70,9 @@ footer {
 }
 
 .flex-container {
-    display: flex;
+    display: flex; 
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .pull-right {
@@ -81,10 +90,27 @@ footer {
     padding-right: 15px;
     padding-left: 15px;
 }
+.status-indicator {
+    position: relative;
+    top: -10px;
+    left: 10px;
+    width: 5px;
+    height: 10px;
+    border-bottom-left-radius: 5px;
+}
 
+.status-indicator-active {
+    background: #595;
+    box-shadow: #ad1 0px 0px 14px 1px;
+}
+
+.status-indicator-inactive {
+    background: #c77;
+    box-shadow: #fb3 0px 0px 15px 1px;
+}
 /*Time*/
 .time-pane {
-    background: darkslategray
+    background: #144;
 }
 
 .digital-clock {
@@ -101,9 +127,9 @@ footer {
     -moz-animation: clock-separator-blink 1s ease infinite;
     -webkit-animation: clock-separator-blink 1s ease infinite;
     animation: clock-separator-blink 1s ease infinite;
-    animation-delay: 10ms;
-    padding-left: 10px;
-    padding-right: 10px;
+    animation-delay: 2ms;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 @-webkit-keyframes clock-separator-blink {
@@ -137,6 +163,27 @@ footer {
 }
 /*//Time*/
 
+/*Settings*/
+.settings-container{
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    right: 0;
+}
+
+.settings-icon {
+    padding: 10px;
+    transition: all 200ms 0ms;
+}
+
+.settings-icon:hover, .settings-icon.active {
+    font-size: 200%;
+    padding: 3px;
+    color: #fff;
+    transition: all .2s;
+}
+/*//Settings*/
+
 /*Departures*/
 .departures-pane {
     background: #466;
@@ -164,9 +211,10 @@ footer {
 /*//Forecast*/
 /*Notifications*/
 .notifications-pane {
-    width: 300px;
-    background: #f75 ;
-    padding: 15px;
+    background: #f75;
+    position: relative;
+    margin: 0 auto;
+    width: 500px;
 }
 
 .notification-item {
@@ -174,10 +222,12 @@ footer {
     border-left: 1px #f86 solid;
     border-top: 1px #f86 solid;
 }
-/*//Notifications*/
-.hide {
-    display: none;
+
+.notification-message-info{
+    
 }
+
+/*//Notifications*/
 /*Header*/
 .pane .header .heading {
     display: inline;

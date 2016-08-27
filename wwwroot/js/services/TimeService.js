@@ -10,7 +10,7 @@ import sv from '../../lib/moment/locale/sv';
 @inject(RequestService, NotificationsService, SettingsService)
 export class TimeService {
     constructor(requestService, notificationsService, settingsService) {
-        moment.locale('sv');
+        moment.locale(settingsService.settings.globalSettings.selectedLocale);
         this.moment = moment;
         this.requestService = requestService;
         this.settings = settingsService.settings.timeSettings;
@@ -18,37 +18,46 @@ export class TimeService {
 
         this.timeUrl = "/time/getCurrentTime";
 
-        this.getTime();
+        this.getTime().then(() => {
+                this.incrementSecondIntervalId = setInterval(() => this.incrementSecond(), 1000);
+        });
         setInterval(() => this.updateTime(), this.settings.refreshTime * 3600000); // hours   
+    }
+
+    getLastUpdated(){
+        if (!this.lastUpdated) {
+           this.updateTime().then(() => {return this.lastUpdated});
+        }
+        
+        return this.lastUpdated;
     }
     
     getTime(){
         if (!this.time) {
-           this.time = this.updateTime();
+            this.time = this.updateTime();
         }
         
         return this.time;
     }
 
     incrementSecond() {
-        this.time.add(1, 's');
+        this.actualTime.add(1, 's');
     }
     
     updateTime() {
-        if (this.incrementSecondIntervalId) {
-            clearInterval(this.incrementSecondIntervalId);
-        }
+        // if (this.incrementSecondIntervalId) {
+        //     clearInterval(this.incrementSecondIntervalId);
+        // }
 
-       this.time = this.requestService
+       return this.requestService
             .getJson(this.timeUrl)
             .then(time => {
-                this.time = moment(time.dateString);
-                this.incrementSecondIntervalId = setInterval(() => this.incrementSecond(), 1000);
-                this.lastUpdated = this.time.clone();
+                this.actualTime = this.moment(time.dateString);
+                this.lastUpdated = this.actualTime.clone();
                 this.notificationsService.add({message: `Time updated!`, severity: 'info'});
-                return this.time;
+                return this.actualTime;
+            }).catch((err) => {
+                throw Error(err);
             });
-        return this.time;
     }
-
 }

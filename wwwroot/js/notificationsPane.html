@@ -1,9 +1,13 @@
 <template>
-    <div class="pane notifications-pane" if.bind="notifications.length">
+    <require from="./attributes/timedHide"></require>
+    <div class="pane notifications-pane" show.bind="notifications.length">
         <div class="notification-item" repeat.for="notification of notifications">
-            <div class="notification-message ${notification.severity}">
+            <div class="notification-message notification-message-${notification.severity}" 
+                timed-hide="item.two-way: notification; 
+                            seconds.bind: 5;
+                            on-state-change.call: onChildStateChange(notifications)">
                 <span class="glyphicons glyphicon-${notification.severity} notification-message-icon"></span>
-                <span class="notification-message-text">${notification.message}</span>
+                <span class="notification-message-text text-${notification.severity}">${notification.message}</span>
             </div>
         </div>
     </div>

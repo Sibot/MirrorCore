@@ -1,5 +1,5 @@
---temp-output:C:\Users\Tobis\Documents\dev\git\MirrorCore\obj\Debug\netcoreapp1.0\
---out:C:\Users\Tobis\Documents\dev\git\MirrorCore\bin\Debug\netcoreapp1.0\MirrorCore.dll
+--temp-output:c:\Users\Tobis\Documents\dev\git\MirrorCore\obj\Debug\netcoreapp1.0\
+--out:c:\Users\Tobis\Documents\dev\git\MirrorCore\bin\Debug\netcoreapp1.0\MirrorCore.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -196,10 +196,10 @@
 --reference:C:\Users\Tobis\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\Tobis\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\Tobis\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
---resource:"C:\Users\Tobis\Documents\dev\git\MirrorCore\obj\Debug\netcoreapp1.0\MirrorCoredotnet-compile.deps.json",MirrorCore.deps.json
-C:\Users\Tobis\Documents\dev\git\MirrorCore\Program.cs
-C:\Users\Tobis\Documents\dev\git\MirrorCore\Startup.cs
-C:\Users\Tobis\Documents\dev\git\MirrorCore\Controllers\DeparturesController.cs
-C:\Users\Tobis\Documents\dev\git\MirrorCore\Controllers\HomeController.cs
-C:\Users\Tobis\Documents\dev\git\MirrorCore\Controllers\TimeController.cs
-C:\Users\Tobis\Documents\dev\git\MirrorCore\Utils\Http.cs
+--resource:"c:\Users\Tobis\Documents\dev\git\MirrorCore\obj\Debug\netcoreapp1.0\MirrorCoredotnet-compile.deps.json",MirrorCore.deps.json
+c:\Users\Tobis\Documents\dev\git\MirrorCore\Program.cs
+c:\Users\Tobis\Documents\dev\git\MirrorCore\Startup.cs
+c:\Users\Tobis\Documents\dev\git\MirrorCore\Controllers\DeparturesController.cs
+c:\Users\Tobis\Documents\dev\git\MirrorCore\Controllers\HomeController.cs
+c:\Users\Tobis\Documents\dev\git\MirrorCore\Controllers\TimeController.cs
+c:\Users\Tobis\Documents\dev\git\MirrorCore\Utils\Http.cs
