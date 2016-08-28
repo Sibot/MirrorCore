@@ -4,7 +4,7 @@ import Backend from 'i18next-xhr-backend';
 export function configure(aurelia) {
     aurelia.use
         .basicConfiguration()
-        .developmentLogging()
+        //.developmentLogging()
         .plugin('aurelia-i18n', i18nConfig);;
 
     aurelia.start()
@@ -21,7 +21,7 @@ function i18nConfig(instance) {
     backend: {                                  // <-- configure backend settings
       loadPath: './locales/{{lng}}/{{ns}}.json', // <-- XHR settings for where to get the files from
     },
-    lng : 'sv',
+    lng : 'en',
     attributes : ['t','i18n'],
     fallbackLng : 'sv',
     debug : false

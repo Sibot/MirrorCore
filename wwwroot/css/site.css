@@ -12,6 +12,7 @@ input {
 footer {
     position: relative;
     bottom: 0;
+    text-align: right;
 }
 
 .container {
@@ -228,6 +229,7 @@ footer {
 }
 
 /*//Notifications*/
+
 /*Header*/
 .pane .header .heading {
     display: inline;

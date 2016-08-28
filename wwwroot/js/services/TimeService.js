@@ -48,8 +48,7 @@ export class TimeService {
         // if (this.incrementSecondIntervalId) {
         //     clearInterval(this.incrementSecondIntervalId);
         // }
-
-       return this.requestService
+        this.time = this.requestService
             .getJson(this.timeUrl)
             .then(time => {
                 this.actualTime = this.moment(time.dateString);
@@ -59,5 +58,6 @@ export class TimeService {
             }).catch((err) => {
                 throw Error(err);
             });
+        return this.time;
     }
 }

@@ -1,10 +1,13 @@
-﻿import {TimeService} from './services/TimeService';
-import {SettingsService} from './services/SettingsService';
-import {inject, BindingEngine} from 'aurelia-framework';
+﻿import {inject, BindingEngine} from 'aurelia-framework';
+import {I18N} from 'aurelia-i18n';
 
-@inject(TimeService, SettingsService, BindingEngine)
+import {TimeService} from './services/TimeService';
+import {SettingsService} from './services/SettingsService';
+
+@inject(TimeService, SettingsService, BindingEngine, I18N)
 export class TimePane {
-    constructor(timeService, settingsService, bindingEngine) {
+    constructor(timeService, settingsService, bindingEngine, i18n) {
+        this.i18n = i18n;
         this.timeService = timeService;
         this.second = 0;
         this.minute = 0;
@@ -17,8 +20,11 @@ export class TimePane {
         this.settings = settingsService.settings.timeSettings;
         this.serviceActive = false;
 
-        let subscription = bindingEngine.propertyObserver(this.timeService, 'time')
-                                        .subscribe((newValue, oldValue) => console.log(oldValue ,newValue));
+        let subscription = bindingEngine.propertyObserver(this.timeService, 'actualTime')
+                                        .subscribe((newValue, oldValue) => {
+                                            //this.time = newValue;
+                                            //console.log(newValue);
+                                        });
     }
 
     attached(){
@@ -28,7 +34,6 @@ export class TimePane {
             this.serviceActive = true;
         }).catch((err) => {
             this.serviceActive = false;
-            console.log(err);
         });
     }
 
@@ -47,7 +52,7 @@ export class TimePane {
         this.minute = this.time.format('mm');
         this.month = this.time.format('MMMM');
         this.second = this.time.format('ss');
-        this.week = this.time.format('[Vecka] w');
+        this.week = `${this.i18n.tr('week')} ${this.time.format('w')}`;
         this.year = this.time.format('YYYY');
     }
 

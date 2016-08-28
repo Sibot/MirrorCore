@@ -9,8 +9,8 @@ export class NotificationsPane {
     }
 
     updateNotifications() {
-        this.notifications = this.notificationsService.notifications.filter(function (element) {
-            return false;
+        this.notifications = this.notifications.filter(function (element) {
+            return !(element.hidden === true);
         });
 
     }
