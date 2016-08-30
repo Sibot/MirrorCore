@@ -28,7 +28,10 @@ export class ForecastService {
                 }
                 
                 function getTime() {
-                    return self.timeService.time;
+                    self.timeService.getTime().then((time) => {
+                        let newTime = time.clone().subtract(6, 'h');
+                        return newTime;
+                    });
                 }
 
                 function getSettings() {
@@ -39,10 +42,11 @@ export class ForecastService {
                     v.moment = makeMoment(v.validTime);
                     return v;
                 }).filter(function(v){
-                    return v.moment.isAfter(getTime()); // TODO: Should show the last forecast before now
+                    var isTooOld = v.moment.isAfter(getTime());
+                    return isTooOld; // TODO: Should show the last forecast before now
                 }).filter(function(v){
-                    var settings = getSettings();
-                    return v.moment.hour() % settings.filterSeries === 0;
+                    var filterBySettings = v.moment.hour() % getSettings().filterSeries === 0;
+                    return filterBySettings;
                 });
                 
                 this.notificationsService.add({message: 'Forecast updated!', severity: 'info'});

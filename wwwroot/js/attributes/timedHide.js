@@ -16,7 +16,7 @@ export class TimedHideCustomAttribute {
 
   hide(element) {
     this.element.classList.add('hide');
-    this.item.hidden = true;
+    this.item.show = false;
 
     if (this.onStateChange) {
         this.onStateChange();

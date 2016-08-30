@@ -1,16 +1,23 @@
-import {inject} from 'aurelia-framework';
+import {inject, BindingEngine} from 'aurelia-framework';
 import {NotificationsService} from './services/NotificationsService';
 
-@inject(NotificationsService)
+@inject(NotificationsService, BindingEngine)
 export class NotificationsPane {
-    constructor(notificationsService){
+    constructor(notificationsService, bindingEngine){
+        this.bindingEngine = bindingEngine;
         this.notificationsService = notificationsService;
         this.notifications = this.notificationsService.notifications;
+        this.displayedNotifications = this.notifications;
+
+        let subscription = bindingEngine.propertyObserver(this.notifications, 'length')
+                                        .subscribe((newValue, oldValue) => {
+                                            this.updateNotifications();
+                                        });
     }
 
     updateNotifications() {
-        this.notifications = this.notifications.filter(function (element) {
-            return !(element.hidden === true);
+        this.displayedNotifications = this.notifications.filter(function (element) {
+            return element.show;
         });
 
     }

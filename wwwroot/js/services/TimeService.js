@@ -45,9 +45,6 @@ export class TimeService {
     }
     
     updateTime() {
-        // if (this.incrementSecondIntervalId) {
-        //     clearInterval(this.incrementSecondIntervalId);
-        // }
         this.time = this.requestService
             .getJson(this.timeUrl)
             .then(time => {

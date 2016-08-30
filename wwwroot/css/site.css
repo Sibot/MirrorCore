@@ -115,8 +115,7 @@ footer {
 }
 
 .digital-clock {
-    margin: 0 auto;
-    text-shadow: 0 0 5px #00c6ff;
+        padding-left: 5px;
 }
 
 .digital-clock .clock-time {
@@ -213,7 +212,7 @@ footer {
 /*Notifications*/
 .notifications-pane {
     background: #f75;
-    position: relative;
+    position: absolute;
     margin: 0 auto;
     width: 500px;
 }
