@@ -23,7 +23,7 @@ export class TimePane {
         let subscription = bindingEngine.propertyObserver(this.timeService, 'actualTime')
                                         .subscribe((newValue, oldValue) => {
                                             //this.time = newValue;
-                                            //console.log(newValue);
+                                            console.log(newValue);
                                         });
     }
     
@@ -32,6 +32,7 @@ export class TimePane {
     attached(){
         this.timeService.getTime().then((time) => {
             this.time = time;
+            this.recomputeData();
             setInterval(() => this.incrementSecond(), 1000);
             this.serviceActive = true;
         }).catch((err) => {

@@ -14,7 +14,7 @@
                 <input type="number" class="settings-prop-input" value.two-way="settings.refreshTime">
             </div>
         </div>
-        <div class="digital-clock" hide.bind="showSettings">
+        <div class="digital-clock" hide.bind="showSettings" show.bind="serviceActive">
             <div class="clock-date">
                 <span class="clock-day">${day | capitalize}</span>
                 <span class="clock-date">${date}</span>
@@ -22,7 +22,7 @@
                 <span class="clock-year">${year}</span>
             </div>
             <div class="clock-week">${week}</div>
-            <div class="clock-time">${hour}<b class="clock-separator-blink">:</b>${minute}<b class="clock-separator-blink">:</b>${second}</div>
+            <div class="clock-time lcd lcd-frame">${hour}<b class="clock-separator-blink">:</b>${minute}<b class="clock-separator-blink">:</b>${second}</div>
         </div>
         <pane-footer last-updated.bind="lastUpdated"></pane-footer>
     </div>

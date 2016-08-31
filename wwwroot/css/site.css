@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=VT323:400,500,600,700,900,300,200);
+
 body {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -119,7 +121,42 @@ footer {
 }
 
 .digital-clock .clock-time {
-    font-size: 4em;
+    font-size: 6rem;
+    color: greenyellow;
+    font-weight: 600;
+    font-family: VT323;
+    line-height: 1.2;
+    text-align: center;
+    text-shadow: 0 0 10px #afa;
+}
+
+.lcd-frame {
+        box-shadow: inset 0 0 10px 1px #000;
+}
+
+.lcd {
+    position: relative;
+}
+
+
+.lcd:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: 
+    -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.2) 33.3%, rgba(255, 255, 255, 0.4) 33.3%, rgba(255, 255, 255, 0.4) 66.7%, rgba(255, 255, 255, 0.6) 66.7%), 
+    -webkit-linear-gradient(left, rgba(255, 0, 0, 0.7) 33.3%, rgba(0, 255, 0, 0.7) 33.3%, rgba(0, 255, 0, 0.6) 66.7%, rgba(0, 0, 255, 0.6) 66.7%);
+    background-image: 
+    -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.2) 33.3%, rgba(255, 255, 255, 0.4) 33.3%, rgba(255, 255, 255, 0.4) 66.7%, rgba(255, 255, 255, 0.6) 66.7%), 
+    -moz-linear-gradient(left, rgba(255, 0, 0, 0.7) 33.3%, rgba(0, 255, 0, 0.7) 33.3%, rgba(0, 255, 0, 0.6) 66.7%, rgba(0, 0, 255, 0.6) 66.7%);
+    background-image: 
+    linear-gradient(to top, rgba(255, 255, 255, 0.2) 33.3%, rgba(255, 255, 255, 0.4) 33.3%, rgba(255, 255, 255, 0.4) 66.7%, rgba(255, 255, 255, 0.6) 66.7%), 
+    linear-gradient(to right, rgba(255, 0, 0, 0.7) 33.3%, rgba(0, 255, 0, 0.7) 33.3%, rgba(0, 255, 0, 0.6) 66.7%, rgba(0, 0, 255, 0.6) 66.7%);
+    background-size: 4px 4px;
+    mix-blend-mode: multiply;
 }
 
 .digital-clock .clock-separator-blink {
