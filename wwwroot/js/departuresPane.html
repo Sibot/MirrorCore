@@ -3,10 +3,19 @@
     <require from="./partials/pane-footer.html"></require>
     <require from="./departureItem"></require>
     <require from='./valueConverters/CapitalizeValueConverter'></require>
-    <div class="pane departures-pane">
+    <div class="pane departures-pane clearfix">
         <div class="status-indicator status-indicator-${serviceActive ? 'active': 'inactive'} pull-right"></div>
-        <pane-header i18n-heading="departure_plural"></pane-header>
-        <div class="departures-container clearfix">
+        <pane-header i18n-heading="departure_plural" click-delegate.call="toggleSettings()"></pane-header>
+        <div class="settings-container" show.bind="showSettings">
+            <h3 class="settings-title">Settings</h3>
+            <div class="settings-prop-container">
+                <label for="filterSeries" class="settings-prop-label small">
+                    Refresh data from server every N minutes:
+                </label>
+                <input type="number" class="settings-prop-input" value.two-way="settings.refreshTime">
+            </div>
+        </div>
+        <div class="departures-container clearfix" hide.bind="showSettings">
             <div class="stop-deviations-container" if.bind="departures.StopPointDeviations.length">
                 <ul class="stop-deviations">
                     <li class="stop-deviation" repeat.for="deviation of departures.StopPointDeviations">${deviation.StopInfo.StopAreaName} - ${deviation.StopInfo.TransportMode} - ${deviation.Deviation.Text}</li>
@@ -30,7 +39,7 @@
                     </departure-item>
                     <div class="stop-deviations">
                         <div if.bind="bus.Deviations.length">
-                            <div repeat.for="deviation of bus.Deviations">${deviation.Text}</li>
+                            <div repeat.for="deviation of bus.Deviations">${deviation.Text}</div>
                         </div>
                     </div>
                 </div>

@@ -7,9 +7,6 @@ import {TimeService} from './services/TimeService';
 
 @inject(I18N, DeparturesService, TimeService, SettingsService)
 export class DeparturesPane {
-
-    showSettings = false;
-
     constructor(i18N, departuresService, timeService, settingsService) {
         this.i18N = i18N;
 
@@ -22,6 +19,8 @@ export class DeparturesPane {
         
         setInterval(() => this.populateDepartures(), this.settings.refreshTime * 60000); //Minutes
     }
+
+    showSettings = false;
 
     populateDepartures() {
         if (this.intervalId) {
@@ -50,7 +49,7 @@ export class DeparturesPane {
 
     
     toggleSettings() {
-        this.showSettings = !this.ShowSettings;
+        this.showSettings = !this.showSettings;
     }
     
     onChildStateChange(value, index, array) {

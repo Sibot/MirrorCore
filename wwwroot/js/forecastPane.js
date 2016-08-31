@@ -33,6 +33,6 @@ export class ForecastPane {
     }
 
     toggleSettings() {
-        this.showSettings = !this.ShowSettings;
+        this.showSettings = !this.showSettings;
     }
 }

@@ -71,9 +71,9 @@ footer {
 }
 
 .flex-container {
-    display: flex; 
+    display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
 .pull-right {
@@ -81,7 +81,7 @@ footer {
 }
 
 .small{
-    font-size: 75%; 
+    font-size: 75%;
 }
 .text-muted {
     color: #888;
@@ -165,10 +165,7 @@ footer {
 
 /*Settings*/
 .settings-container{
-    position: absolute;
-    padding: 10px;
-    top: 0;
-    right: 0;
+
 }
 
 .settings-icon {
@@ -181,6 +178,11 @@ footer {
     padding: 3px;
     color: #fff;
     transition: all .2s;
+}
+.settings-prop-input{
+    display: block;
+    max-width: 150px;
+    width: 50px;
 }
 /*//Settings*/
 

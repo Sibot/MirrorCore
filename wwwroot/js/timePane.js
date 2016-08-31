@@ -26,7 +26,9 @@ export class TimePane {
                                             //console.log(newValue);
                                         });
     }
-
+    
+    showSettings = false;
+    
     attached(){
         this.timeService.getTime().then((time) => {
             this.time = time;
@@ -56,9 +58,8 @@ export class TimePane {
         this.year = this.time.format('YYYY');
     }
 
-    showSettings = false;
     toggleSettings(){
-        this.showSettings = !this.ShowSettings;
+        this.showSettings = !this.showSettings;
     }
 
 }

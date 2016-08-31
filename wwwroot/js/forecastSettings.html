@@ -1,7 +1,15 @@
 <template bindable="settings">
-    <h3 class="settingsTitle">Settings ${settings.heading}</h3>
-    <label for="filterSeries" class="prop-label small">
-        Filter forecasts to show every N forecast:
-    </label>
-    <input type="text" class="prop" value.two-way="settings.filterSeries">
+    <h3 class="settingsTitle">Settings</h3>
+    <div class="settings-prop-container">
+        <label for="filterSeries" class="settings-prop-label small">
+            Filter forecasts to show every N hours:
+        </label>
+        <input type="number" class="settings-prop-input" value.two-way="settings.filterSeries">
+    </div>
+    <div class="settings-prop-container">
+        <label for="filterSeries" class="settings-prop-label small">
+            Refresh data from server every N minutes:
+        </label>
+        <input type="number" class="settings-prop-input" value.two-way="settings.refreshTime">
+    </div>
 </template>

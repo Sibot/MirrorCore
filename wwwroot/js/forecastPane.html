@@ -4,11 +4,11 @@
     <require from="./partials/pane-footer.html"></require>
     <require from="./forecastItem"></require>
     <require from="./forecastSettings"></require>
-    <div class="pane forecast-pane clearfix" id="forecastPane">
+    <div class="pane forecast-pane clearfix">
         <div class="status-indicator status-indicator-${serviceActive ? 'active': 'inactive'} pull-right"></div>
-        <pane-header i18n-heading="forecast"></pane-header>
+        <pane-header i18n-heading="forecast" click-delegate.call="toggleSettings(showSettings)"></pane-header>
         <forecast-settings settings.two-way="settings" show.bind="showSettings"></forecast-settings>
-        <forecast-item repeat.for="forecast of forecastData.timeSeries"></forecast-item>
+        <forecast-item repeat.for="forecast of forecastData.timeSeries" hide.bind="showSettings"></forecast-item>
         <pane-footer last-updated.bind="lastUpdated"></pane-footer>
     </div>
 </template>

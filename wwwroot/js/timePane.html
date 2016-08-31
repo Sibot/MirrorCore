@@ -4,8 +4,17 @@
     <require from='./valueConverters/CapitalizeValueConverter'></require>
     <div class="pane time-pane clearfix" id="timePane" if-bind="moment">
         <div class="status-indicator status-indicator-${serviceActive ? 'active': 'inactive'} pull-right"></div>
-        <pane-header i18n-heading="time"></pane-header>
-        <div class="digital-clock">
+        <pane-header i18n-heading="time" click-delegate.call="toggleSettings()"></pane-header>
+        <div class="settings-container" show.bind="showSettings">
+            <h3 class="settings-title">Settings</h3>
+            <div class="settings-prop-container">
+                <label for="filterSeries" class="settings-prop-label small">
+                    Refresh data from server every N hours:
+                </label>
+                <input type="number" class="settings-prop-input" value.two-way="settings.refreshTime">
+            </div>
+        </div>
+        <div class="digital-clock" hide.bind="showSettings">
             <div class="clock-date">
                 <span class="clock-day">${day | capitalize}</span>
                 <span class="clock-date">${date}</span>
