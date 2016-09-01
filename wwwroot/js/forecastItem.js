@@ -4,7 +4,7 @@ import {inject} from 'aurelia-framework';
 @inject(TimeService)
 export class ForecastItem {
 
-    constructor(timeService){
+    constructor(timeService) {
         this.timeService = timeService;
         this.moment = timeService.moment;
     }
@@ -20,4 +20,4 @@ export class ForecastItem {
         this.icon = bindingContext.forecast.parameters[18].values[0];
         this.isNight = isNight;
     }
- }
+}

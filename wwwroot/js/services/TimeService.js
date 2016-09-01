@@ -19,38 +19,38 @@ export class TimeService {
         this.timeUrl = "/time/getCurrentTime";
 
         this.getTime().then(() => {
-                this.incrementSecondIntervalId = setInterval(() => this.incrementSecond(), 1000);
+            this.incrementSecondIntervalId = setInterval(() => this.incrementSecond(), 1000);
         });
         setInterval(() => this.updateTime(), this.settings.refreshTime * 3600000); // hours   
     }
 
-    getLastUpdated(){
+    getLastUpdated() {
         if (!this.lastUpdated) {
-           this.updateTime().then(() => {return this.lastUpdated});
+            this.updateTime().then(() => { return this.lastUpdated });
         }
-        
+
         return this.lastUpdated;
     }
-    
-    getTime(){
+
+    getTime() {
         if (!this.time) {
             this.time = this.updateTime();
         }
-        
+
         return this.time;
     }
 
     incrementSecond() {
         this.actualTime.add(1, 's');
     }
-    
+
     updateTime() {
         this.time = this.requestService
             .getJson(this.timeUrl)
             .then(time => {
                 this.actualTime = this.moment(time.dateString);
                 this.lastUpdated = this.actualTime.clone();
-                this.notificationsService.add({message: `Time updated!`, severity: 'info'});
+                this.notificationsService.add({ message: `Time updated!`, severity: 'info' });
                 return this.actualTime;
             }).catch((err) => {
                 throw Error(err);

@@ -16,7 +16,7 @@ export class DeparturesPane {
 
         this.populateDepartures();
         this.serviceActive = false;
-        
+
         setInterval(() => this.populateDepartures(), this.settings.refreshTime * 60000); //Minutes
     }
 
@@ -28,30 +28,30 @@ export class DeparturesPane {
         }
 
         this.departuresService.getDepartures()
-                              .then(data => {
-                                  this.data = data;
-                                  this.departures = data.ResponseData;
-                                  this.relativeTime = this.timeService.moment(this.departures.LatestUpdate)
-                                                                      .add(this.departures.DataAge, 's');
-                                  this.lastUpdated = this.timeService.getTime()
-                                      .then((time) => { this.lastUpdated = time.format("HH:mm:ss")});
-                                  this.intervalId = setInterval(() => this.incrementSecond(), 1000);
-                                  this.serviceActive = true;
-                              }).catch((err) => {
-                                  this.serviceActive = false;
-                                  console.log(err);
-                              });
+            .then(data => {
+                this.data = data;
+                this.departures = data.ResponseData;
+                this.relativeTime = this.timeService.moment(this.departures.LatestUpdate)
+                    .add(this.departures.DataAge, 's');
+                this.lastUpdated = this.timeService.getTime()
+                    .then((time) => { this.lastUpdated = time.format("HH:mm:ss") });
+                this.intervalId = setInterval(() => this.incrementSecond(), 1000);
+                this.serviceActive = true;
+            }).catch((err) => {
+                this.serviceActive = false;
+                console.log(err);
+            });
     }
 
     incrementSecond() {
         this.relativeTime.add(1, 's');
     }
 
-    
+
     toggleSettings() {
         this.showSettings = !this.showSettings;
     }
-    
+
     onChildStateChange(value, index, array) {
         array.splice(index, 1);
     }

@@ -3,7 +3,7 @@
     <div class="pane notifications-pane" show.bind="displayedNotifications.length">
         <div class="notification-item" repeat.for="notification of displayedNotifications">
             <div class="notification-message notification-message-${notification.severity}" 
-                timed-hide="item.two-way: notification; 
+                 timed-hide="item.two-way: notification; 
                             seconds.bind: 5;
                             on-state-change.call: onChildStateChange(displayedNotifications)">
                 <span class="glyphicons glyphicon-${notification.severity} notification-message-icon"></span>

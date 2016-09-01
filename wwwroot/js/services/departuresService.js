@@ -13,20 +13,20 @@ export class DeparturesService {
         this.lastUpdated = this.timeService.getTime();
     }
 
-    getDepartures(){
+    getDepartures() {
         let departureUrl = 'departures/getFutureDepartures';
         return this.requestService
             .getJson(departureUrl)
             .then(departures => {
-                if (departures.StatusCode !== 0){
-                    this.notificationsService.add({message: departures.Message, severity: 'warn', context: departures }); 
+                if (departures.StatusCode !== 0) {
+                    this.notificationsService.add({ message: departures.Message, severity: 'warn', context: departures });
                     throw Error(departures.Message);
                 }
                 this.departuresData = departures;
-                this.notificationsService.add({message: 'Departures updated!', severity: 'info'});
+                this.notificationsService.add({ message: 'Departures updated!', severity: 'info' });
                 return departures;
             });
     }
 
-    errorMessage = {"StatusCode":5322,"Message":"Could not retrive information for buses, trains, trams or metro.","ExecutionTime":10026,"ResponseData":{"LatestUpdate":"0001-01-01T00:00:00","DataAge":0,"Metros":[],"Buses":[],"Trains":[],"Trams":[],"Ships":[],"StopPointDeviations":[]}};
+    errorMessage = { "StatusCode": 5322, "Message": "Could not retrive information for buses, trains, trams or metro.", "ExecutionTime": 10026, "ResponseData": { "LatestUpdate": "0001-01-01T00:00:00", "DataAge": 0, "Metros": [], "Buses": [], "Trains": [], "Trams": [], "Ships": [], "StopPointDeviations": [] } };
 }

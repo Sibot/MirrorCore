@@ -2,13 +2,13 @@
 import Backend from 'i18next-xhr-backend';
 
 export function configure(aurelia) {
-    aurelia.use
-        .basicConfiguration()
-        //.developmentLogging()
-        .plugin('aurelia-i18n', i18nConfig);;
+  aurelia.use
+    .basicConfiguration()
+    //.developmentLogging()
+    .plugin('aurelia-i18n', i18nConfig);
 
-    aurelia.start()
-        .then(aurelia => aurelia.setRoot());
+  aurelia.start()
+    .then(aurelia => aurelia.setRoot());
 }
 
 function i18nConfig(instance) {
@@ -21,9 +21,9 @@ function i18nConfig(instance) {
     backend: {                                  // <-- configure backend settings
       loadPath: './locales/{{lng}}/{{ns}}.json', // <-- XHR settings for where to get the files from
     },
-    lng : 'en',
-    attributes : ['t','i18n'],
-    fallbackLng : 'sv',
-    debug : false
+    lng: 'en',
+    attributes: ['t', 'i18n'],
+    fallbackLng: 'sv',
+    debug: false
   });
 }

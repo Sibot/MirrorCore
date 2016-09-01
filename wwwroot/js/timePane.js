@@ -21,15 +21,15 @@ export class TimePane {
         this.serviceActive = false;
 
         let subscription = bindingEngine.propertyObserver(this.timeService, 'actualTime')
-                                        .subscribe((newValue, oldValue) => {
-                                            //this.time = newValue;
-                                            console.log(newValue);
-                                        });
+            .subscribe((newValue, oldValue) => {
+                //this.time = newValue;
+                console.log(newValue);
+            });
     }
-    
+
     showSettings = false;
-    
-    attached(){
+
+    attached() {
         this.timeService.getTime().then((time) => {
             this.time = time;
             this.recomputeData();
@@ -43,7 +43,7 @@ export class TimePane {
     incrementSecond() {
         this.timeService.getTime().then((time) => {
             this.time = time;
-            this.lastUpdated = this.timeService.getLastUpdated().format('HH:mm:ss'); 
+            this.lastUpdated = this.timeService.getLastUpdated().format('HH:mm:ss');
             this.recomputeData();
         });
     }
@@ -59,7 +59,7 @@ export class TimePane {
         this.year = this.time.format('YYYY');
     }
 
-    toggleSettings(){
+    toggleSettings() {
         this.showSettings = !this.showSettings;
     }
 

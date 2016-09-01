@@ -7,7 +7,7 @@ export class DepartureItem {
     @bindable relativeTime;
     @bindable onStateChange;
 
-    constructor(timeService){
+    constructor(timeService) {
         this.timeService = timeService;
     }
 
@@ -19,7 +19,7 @@ export class DepartureItem {
         this.timeUntilDeparture = this.relativeTime.to(this.departureTime, true)
     }
 
-    attached(){
+    attached() {
         this.intervalId = setInterval(() => this.recompute(), 1000);
     }
 
@@ -30,7 +30,7 @@ export class DepartureItem {
     recompute() {
         this.timeUntilDeparture = this.relativeTime.to(this.departureTime, true);
         this.timeDiff = this.relativeTime.diff(this.departureTime, true);
-        if (this.timeDiff > 0){
+        if (this.timeDiff > 0) {
             this.notifyStateChange();
         }
     }
@@ -40,4 +40,4 @@ export class DepartureItem {
             this.onStateChange();
         }
     }
- }
+}

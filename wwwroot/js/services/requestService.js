@@ -14,13 +14,13 @@ export class RequestService {
 
     getJson(url) {
         return this.http.fetch(url)
-                        .then(response => {
-                            var result = response.json(); 
-                            return result;
-                        })
-                        .catch((err) => {
-                            this.notificationsService.add( { message: err, severity:'warn', context: err } );
-                            console.log(err);
-                        });
+            .then(response => {
+                var result = response.json();
+                return result;
+            })
+            .catch((err) => {
+                this.notificationsService.add({ message: err, severity: 'warn', context: err });
+                console.log(err);
+            });
     }
 }

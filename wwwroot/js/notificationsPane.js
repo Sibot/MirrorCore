@@ -3,16 +3,16 @@ import {NotificationsService} from './services/NotificationsService';
 
 @inject(NotificationsService, BindingEngine)
 export class NotificationsPane {
-    constructor(notificationsService, bindingEngine){
+    constructor(notificationsService, bindingEngine) {
         this.bindingEngine = bindingEngine;
         this.notificationsService = notificationsService;
         this.notifications = this.notificationsService.notifications;
         this.displayedNotifications = this.notifications;
 
         let subscription = bindingEngine.propertyObserver(this.notifications, 'length')
-                                        .subscribe((newValue, oldValue) => {
-                                            this.updateNotifications();
-                                        });
+            .subscribe((newValue, oldValue) => {
+                this.updateNotifications();
+            });
     }
 
     updateNotifications() {
