@@ -270,3 +270,44 @@ footer {
     margin-bottom: 10px;
 }
 /*//Header*/
+
+.col-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loader-spinner{
+  padding-top: 1em;
+}
+.spinner {
+  border-top: .5em solid rgba(255, 255, 255, 0.3);
+  border-right: .5em solid rgba(255, 255, 255, 0.3);
+  border-bottom: .5em solid rgba(255, 255, 255, 0.3);
+  border-left: .5em solid hsl( 255, 100%, 100%);
+  -webkit-animation: load 1.1s infinite linear;
+  animation: load 1.1s infinite linear;
+  border-radius: 50%;
+  width: 5em;
+  height: 5em;
+}
+
+@-webkit-keyframes load {
+  0% {
+    -webkit-transform: rotate( 0deg );
+    transform: rotate( 0deg );
+  }
+  100% {
+    -webkit-transform: rotate( 360deg );
+    transform: rotate( 360deg )
+  }
+}
+@keyframes load{
+  0%{
+    -webkit-transform: rotate( 0deg );
+    transform: rotate( 0deg );
+  }
+  100%{
+    -webkit-transform: rotate( 360deg );
+    transform: rotate( 360deg )
+  }
+}
