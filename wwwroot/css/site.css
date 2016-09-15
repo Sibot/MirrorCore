@@ -276,9 +276,11 @@ footer {
   flex-direction: column;
   align-items: center;
 }
+/*Loading*/
 .loader-spinner{
   padding-top: 1em;
 }
+
 .spinner {
   border-top: .5em solid rgba(255, 255, 255, 0.3);
   border-right: .5em solid rgba(255, 255, 255, 0.3);
@@ -301,7 +303,7 @@ footer {
     transform: rotate( 360deg )
   }
 }
-@keyframes load{
+@keyframes load {
   0%{
     -webkit-transform: rotate( 0deg );
     transform: rotate( 0deg );
@@ -311,3 +313,4 @@ footer {
     transform: rotate( 360deg )
   }
 }
+/*//Loading*/
